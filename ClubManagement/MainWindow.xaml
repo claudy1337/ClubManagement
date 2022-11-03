@@ -1,0 +1,45 @@
+﻿<Window x:Class="ClubManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClubManagement"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize"
+        FontFamily="Poppins"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Height="550" Width="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <Grid Height="500">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <material:Card Background="#6DD5FA" Margin="20" Grid.Column="0">
+                    <Grid Height="460">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </material:Card>
+                <material:Card Grid.Column="1" Margin="20">
+                    <Frame 
+                        BorderBrush="Transparent"
+                        Name="fContainer"
+                        NavigationUIVisibility="Hidden" Width="660" Height="460"/>
+                </material:Card>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

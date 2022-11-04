@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClubManagement.Data.Classes;
 using ClubManagement.Data.Model;
 using ClubManagement.Pages;
 using ClubManagement.Windws;
@@ -28,6 +30,11 @@ namespace ClubManagement
         {
             CurrentUser = currnetUser;
             InitializeComponent();
+            if (DBMethodsFromUser.GetAdminRole(CurrentUser.Authorization.Login) == false)
+            {
+                clControl.Visibility = Visibility.Hidden;
+                clStatistics.Visibility = Visibility.Hidden;
+            }
             txtWelcome.Text = $"Welcome: {CurrentUser.Role.Title} " + CurrentUser.Name;
             fContainer.Navigate(new AccountPage(CurrentUser));
         }

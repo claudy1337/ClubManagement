@@ -41,33 +41,33 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" x:Name="clControl" MouseLeftButtonDown="clControl_MouseLeftButtonDown">
                         <material:PackIcon Kind="BookEdit" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Control" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Контроль" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="25,0,0,0" x:Name="clStatistics" MouseLeftButtonDown="clStatistics_MouseLeftButtonDown">
                         <material:PackIcon Kind="StateMachine" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Statistics" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Статистика" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <material:PackIcon Kind="AccountSchool" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Student" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Студенты" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="25,0,0,0">
                         <material:PackIcon Kind="SetCenter" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Section" HorizontalAlignment="Center" FontSize="25" />
+                        <TextBlock Text="Секции" HorizontalAlignment="Center" FontSize="25" />
                     </StackPanel>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" x:Name="clAccount" MouseLeftButtonDown="clAccount_MouseLeftButtonDown">
                         <material:PackIcon Kind="Account" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Account" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Аккаунт" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="25,0,0,0" x:Name="clExit" MouseLeftButtonDown="clExit_MouseLeftButtonDown">
                         <material:PackIcon Kind="ExitRun" Width="45" Height="45" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Exit" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Выход" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </StackPanel>
                 

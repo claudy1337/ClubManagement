@@ -36,7 +36,7 @@
             <Button Width="220"
                     Height="35"
                     Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}" 
-                    Grid.Row="2" Content="Enter" x:Name="btnAuth" Click="btnAuth_Click"/>
+                    Grid.Row="2" Content="Войти" x:Name="btnAuth" Click="btnAuth_Click"/>
         </Grid>
     </Border>
 </Window>

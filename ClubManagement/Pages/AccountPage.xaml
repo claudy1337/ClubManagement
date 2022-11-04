@@ -21,7 +21,7 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Account" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
+                <TextBlock Text="Аккаунт" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBox
                      x:Name="txtPassword"
@@ -58,7 +58,7 @@
                         Click="btnEdit_Click"
                         Grid.Row="1"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
-                        Content="Edit"/>
+                        Content="Применить"/>
                 <Image x:Name="imgUser" Margin="10" MouseLeftButtonDown="imgUser_MouseLeftButtonDown" Source="{Binding Image}" Grid.Row="0"/>
             </Grid>
         </StackPanel>

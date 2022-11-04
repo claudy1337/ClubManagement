@@ -18,23 +18,23 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <material:PackIcon Kind="SetCenter" Width="45" Height="45" HorizontalAlignment="Center"/>
-                <TextBlock Text="Section" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Секции" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
             <StackPanel Margin="25,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <material:PackIcon Kind="HumanMaleBoard" Width="45" Height="45" HorizontalAlignment="Center"/>
-                <TextBlock Text="Teacher" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Учителя" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
             <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <material:PackIcon Kind="FileCabinet" Width="45" Height="45" HorizontalAlignment="Center"/>
-                <TextBlock Text="Cabinet" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Кабинет" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
             <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <material:PackIcon Kind="Timetable" Width="45" Height="45" HorizontalAlignment="Center"/>
-                <TextBlock Text="Timetable" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Расписание" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
             <StackPanel>
                 <material:PackIcon Kind="ClipboardText" Width="45" Height="45" HorizontalAlignment="Center"/>
-                <TextBlock Text="Appoint" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Назначить" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
         </StackPanel>
     </Grid>

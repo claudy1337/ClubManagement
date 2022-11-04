@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClubManagement.Data.Model;
 using ClubManagement.Pages;
+using ClubManagement.Windws;
 
 namespace ClubManagement
 {
@@ -21,10 +23,13 @@ namespace ClubManagement
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public static User CurrentUser;
+        public MainWindow(User currnetUser)
         {
+            CurrentUser = currnetUser;
             InitializeComponent();
-            fContainer.Navigate(new AccountPage());
+            txtWelcome.Text = $"Welcome: {CurrentUser.Role.Title} " + CurrentUser.Name;
+            fContainer.Navigate(new AccountPage(CurrentUser));
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -38,6 +43,36 @@ namespace ClubManagement
             {
                 return;
             }
+        }
+
+        private void minus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+        private void clAccount_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainer.Navigate(new AccountPage(CurrentUser));
+        }
+        private void clExit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Auth auth = new Auth();
+            auth.Show();
+            this.Close();
+        }
+
+        private void clControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainer.Navigate(new ControlPage(CurrentUser));
+        }
+
+        private void clStatistics_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

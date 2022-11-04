@@ -5,10 +5,62 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClubManagement.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="460" d:DesignWidth="660"
-      Title="AccountPage" Background="Black">
+      d:DesignHeight="450" d:DesignWidth="660"
+      Title="AccountPage"
+      FontFamily="Poppins"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <material:Card Width="315" Height="385" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Account" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBox
+                     x:Name="txtPassword"
+                     Text="{Binding Authorization.Password}"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Пароль" Width="220"/>
+                    <TextBox
+                     Margin="0,15,0,0"
+                     Text="{Binding Name}" x:Name="txtName"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Имя" Width="220"/>
+                    <TextBox
+                     Margin="0,15,0,15"
+                     Text="{Binding Surname}" x:Name="txtSurname"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Фамилия" Width="220"/>
+                    <TextBox
+                     Text="{Binding Patronymic}" x:Name="txtPatronymic"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Отчество" Width="220"/>
+                </StackPanel>
+            </Grid>
+        </material:Card>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Grid Height="385">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="335"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btnEdit"
+                        VerticalAlignment="Center"
+                        Width="200"
+                        Height="35"
+                        Click="btnEdit_Click"
+                        Grid.Row="1"
+                        Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                        Content="Edit"/>
+                <Image x:Name="imgUser" Margin="10" MouseLeftButtonDown="imgUser_MouseLeftButtonDown" Source="{Binding Image}" Grid.Row="0"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

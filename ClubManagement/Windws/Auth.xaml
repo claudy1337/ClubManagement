@@ -11,8 +11,32 @@
         FontFamily="Poppins"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="Auth" Height="550" Width="850">
-    <Grid>
-        <TextBlock Text="fdsdsf"/>
-    </Grid>
+        Title="Auth" Height="400" Width="500">
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30"
+                       Text="Authorization" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBox
+                     Margin="0,0,0,20" x:Name="txtLogin"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Логин" Width="220"/>
+                <PasswordBox
+                     x:Name="txtPassword"
+                     Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                     material:HintAssist.Hint="Пароль" Width="220"/>
+            </StackPanel>
+            <Button Width="220"
+                    Height="35"
+                    Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}" 
+                    Grid.Row="2" Content="Enter" x:Name="btnAuth" Click="btnAuth_Click"/>
+        </Grid>
+    </Border>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubManagement.Data.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClubManagement.Data.Model;
+using ClubManagement.Pages;
 
 namespace ClubManagement.Windws
 {
@@ -19,6 +22,7 @@ namespace ClubManagement.Windws
     /// </summary>
     public partial class Auth : Window
     {
+        public static User CurrentUser;
         public Auth()
         {
             InitializeComponent();
@@ -34,6 +38,31 @@ namespace ClubManagement.Windws
             catch (System.InvalidOperationException)
             {
                 return;
+            }
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
+            {
+                MessageBox.Show("заполните все поля");
+                return;
+            }
+            else
+            {
+                if (DBMethodsFromUser.IsCorrectUser(txtLogin.Text, txtPassword.Password))
+                {
+                    CurrentUser = DBMethodsFromUser.CurrentUser;
+                    MainWindow main = new MainWindow(CurrentUser);
+                    MessageBox.Show($"Welcome: {CurrentUser.Name}");
+                    main.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("не верные данные");
+                    return;
+                }
             }
         }
     }

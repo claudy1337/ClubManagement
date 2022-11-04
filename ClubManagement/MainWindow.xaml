@@ -11,35 +11,73 @@
         FontFamily="Poppins"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Height="550" Width="850">
+        Height="650" Width="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="150"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1">
-            <Grid Height="500">
+        <StackPanel Grid.Row="0">
+            <Grid Height="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <material:Card Background="#6DD5FA" Margin="20" Grid.Column="0">
-                    <Grid Height="460">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </material:Card>
-                <material:Card Grid.Column="1" Margin="20">
-                    <Frame 
-                        BorderBrush="Transparent"
-                        Name="fContainer"
-                        NavigationUIVisibility="Hidden" Width="660" Height="460"/>
-                </material:Card>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
+                    <material:PackIcon Kind="Minus" Width="35" Height="35" x:Name="minus" MouseLeftButtonDown="minus_MouseLeftButtonDown"/>
+                    <material:PackIcon Kind="Close" Width="35" Height="35" x:Name="close" MouseLeftButtonDown="close_MouseLeftButtonDown"/>
+                </StackPanel>
+                <TextBlock x:Name="txtWelcome" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="25"/>
             </Grid>
         </StackPanel>
+        <material:Card Margin="20" Grid.Row="1">
+            <Grid Height="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" x:Name="clControl" MouseLeftButtonDown="clControl_MouseLeftButtonDown">
+                        <material:PackIcon Kind="BookEdit" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Control" HorizontalAlignment="Center" FontSize="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="25,0,0,0" x:Name="clStatistics" MouseLeftButtonDown="clStatistics_MouseLeftButtonDown">
+                        <material:PackIcon Kind="StateMachine" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Statistics" HorizontalAlignment="Center" FontSize="25"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <material:PackIcon Kind="AccountSchool" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Student" HorizontalAlignment="Center" FontSize="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="25,0,0,0">
+                        <material:PackIcon Kind="SetCenter" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Section" HorizontalAlignment="Center" FontSize="25" />
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" x:Name="clAccount" MouseLeftButtonDown="clAccount_MouseLeftButtonDown">
+                        <material:PackIcon Kind="Account" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Account" HorizontalAlignment="Center" FontSize="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="25,0,0,0" x:Name="clExit" MouseLeftButtonDown="clExit_MouseLeftButtonDown">
+                        <material:PackIcon Kind="ExitRun" Width="45" Height="45" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Exit" HorizontalAlignment="Center" FontSize="25"/>
+                    </StackPanel>
+                </StackPanel>
+                
+            </Grid>
+        </material:Card>
+        <material:Card Grid.Row="2" Margin="20">
+            <Frame 
+                   BorderBrush="Transparent"
+                   Name="fContainer"
+                   NavigationUIVisibility="Hidden"/>
+        </material:Card>
     </Grid>
 </Window>

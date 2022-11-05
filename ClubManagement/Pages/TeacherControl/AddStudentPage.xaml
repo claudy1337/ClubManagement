@@ -32,19 +32,8 @@
                      material:HintAssist.Hint="Отчество" Width="220"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
                       x:Name="CBClass" DisplayMemberPath="Number"
-                      material:HintAssist.Hint="Класс"
                       Margin="0,15,0,0"
-                      Foreground="Black"
-                      Height="50">
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem">
-                        <Setter Property="BorderBrush" Value="White"/>
-                        <Setter Property="Background" Value="#908282"/>
-                        <Setter Property="Foreground" Value="Black"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>
-            </ComboBox>
-
+                      material:HintAssist.Hint="Класс"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
                       x:Name="CBCharacter" DisplayMemberPath="Сharacter"
                       material:HintAssist.Hint="Буква"

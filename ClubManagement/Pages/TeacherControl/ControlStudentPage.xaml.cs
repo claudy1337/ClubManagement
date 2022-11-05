@@ -29,6 +29,17 @@ namespace ClubManagement.Pages.TeacherControl
         {
             CurrentUser = currentUser;
             InitializeComponent();
+            BindingData();
+        }
+        private void BindingData()
+        {
+            cbSectionTeacher.ItemsSource = DBMethodsFromSectionTeacher.GetSection_Teachers(CurrentUser.ID);
+        }
+
+        private void cbSectionTeacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectTeacher = cbSectionTeacher.SelectedItem as Section_Teacher;
+            DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s=>s.SectionID == selectTeacher.Section.ID).ToList();
         }
     }
 }

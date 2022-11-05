@@ -18,6 +18,10 @@ namespace ClubManagement.Data.Classes
         {
             return GetTeacher_Sections().FirstOrDefault(t => t.Teacher.ID == teacher && t.Section.ID == section);
         }
+        public static IEnumerable<Section_Teacher> GetSection_Teachers(int idTeacher)
+        {
+            return GetTeacher_Sections().Where(s=>s.Teacher.User.ID == idTeacher && s.isActive == true).ToList();
+        }
         public static void EditTeacherFromSection(int section, int teacher, bool status)
         {
             var getTeacherSection = GetTeacher_Section(section, teacher);

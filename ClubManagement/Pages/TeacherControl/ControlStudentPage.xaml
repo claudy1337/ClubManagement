@@ -5,12 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClubManagement.Pages.TeacherControl"
       mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="660"
+      d:DesignHeight="380" d:DesignWidth="690"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
       Background="White"
       Title="ControlStudentPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox  Style="{StaticResource MaterialDesignFilledComboBox}"
+                   x:Name="cbSectionTeacher" DisplayMemberPath="Section.Title"
+                   SelectionChanged="cbSectionTeacher_SelectionChanged"
+                   Width="200"
+                   Height="50"
+                   Grid.Row="0"
+                   material:HintAssist.Hint="Предмет"/>
+        <StackPanel Grid.Row="1" Margin="5">
+            <DataGrid Grid.Row="1" x:Name="DGSectionStudents" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Student.Name}"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.Surname}"/>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding Student.Patronymic}"/>
+                    <DataGridTextColumn Header="Класс" Binding="{Binding Student.Class.Number.Number}"/>
+                    <DataGridTextColumn Header="Буква" Binding="{Binding Student.Class.Сharacter.Сharacter}"/>
+                    <DataGridTextColumn Header="Активность" Binding="{Binding isActive}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Page>

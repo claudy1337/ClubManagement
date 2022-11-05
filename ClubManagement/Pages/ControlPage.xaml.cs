@@ -40,5 +40,20 @@ namespace ClubManagement.Pages
         {
             fContainerControl.Navigate(new TeacherPage());
         }
+
+        private void clCabinet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerControl.Navigate(new CabinetPage());
+        }
+
+        private void clTimeTable_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerControl.Navigate(new TimetablePage());
+        }
+
+        private void clAppoint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerControl.Navigate(new AppointPage());
+        }
     }
 }

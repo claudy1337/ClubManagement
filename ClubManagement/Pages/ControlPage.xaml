@@ -24,16 +24,16 @@
                 <material:PackIcon Kind="HumanMaleBoard" Width="45" Height="45" HorizontalAlignment="Center"/>
                 <TextBlock Text="Учителя" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
-            <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="clCabinet" MouseLeftButtonDown="clCabinet_MouseLeftButtonDown">
                 <material:PackIcon Kind="FileCabinet" Width="45" Height="45" HorizontalAlignment="Center"/>
                 <TextBlock Text="Кабинет" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
-            <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="0,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="clTimeTable" MouseLeftButtonDown="clTimeTable_MouseLeftButtonDown">
                 <material:PackIcon Kind="Timetable" Width="45" Height="45" HorizontalAlignment="Center"/>
                 <TextBlock Text="Расписание" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
-            <StackPanel>
-                <material:PackIcon Kind="ClipboardText" Width="45" Height="45" HorizontalAlignment="Center"/>
+            <StackPanel x:Name="clAppoint" MouseLeftButtonDown="clAppoint_MouseLeftButtonDown">
+                <material:PackIcon Kind="ClipboardText" Width="45" Height="45" HorizontalAlignment="Center" />
                 <TextBlock Text="Назначить" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
         </StackPanel>

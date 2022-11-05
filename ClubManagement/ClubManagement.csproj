@@ -73,7 +73,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\Classes\DBConnection.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromCabinet.cs" />
     <Compile Include="Data\Classes\DBMethodsFromSection.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromSectionTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromShedule.cs" />
     <Compile Include="Data\Classes\DBMethodsFromTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromUser.cs" />
@@ -149,6 +151,9 @@
     <Compile Include="Pages\AdminControl\AppointPage.xaml.cs">
       <DependentUpon>AppointPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminControl\CabinetPage.xaml.cs">
+      <DependentUpon>CabinetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminControl\ControlSectionPage.xaml.cs">
       <DependentUpon>ControlSectionPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +165,9 @@
     </Compile>
     <Compile Include="Pages\AdminControl\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminControl\TimetablePage.xaml.cs">
+      <DependentUpon>TimetablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ControlPage.xaml.cs">
       <DependentUpon>ControlPage.xaml</DependentUpon>
@@ -190,6 +198,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AdminControl\CabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdminControl\ControlSectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AdminControl\TeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminControl\TimetablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

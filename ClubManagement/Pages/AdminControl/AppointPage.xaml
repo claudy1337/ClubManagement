@@ -5,10 +5,87 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClubManagement.Pages.AdminControl"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="380" d:DesignWidth="690"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      FontFamily="Poppins"
+      Background="White"
       Title="AppointPage">
 
     <Grid>
-        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Center" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Teacher: " FontSize="15"/>
+                    <TextBlock x:Name="txtName" FontSize="15"/>
+                </StackPanel>
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                      x:Name="cbTeacher"
+                      Margin="0,5,0,15"
+                      SelectionChanged="cbTeacher_SelectionChanged"
+                      DisplayMemberPath="User.Name" Height="50"
+                      material:HintAssist.Hint="Учитель"/>
+
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                      x:Name="cbSection"
+                      SelectionChanged="cbTeacher_SelectionChanged"
+                      DisplayMemberPath="Title" Height="50"
+                      material:HintAssist.Hint="День Недели"/>
+                <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add" Margin="0,20,0,0"/>
+            </StackPanel>
+            <ListView Grid.Column="1" x:Name="lstvAppoint">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="520" Height="380">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <TextBlock Text="Section" FontSize="20" Foreground="White"/>
+                                <StackPanel Height="350">
+                                    <Grid Height="350">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Section.Title}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.Schedule.TimeMinutes.Min}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.Schedule.TimeHour.Hour}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.Schedule.DayOfWeeks.Title}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.isActive}" FontSize="15" Foreground="White"/>
+                                        </StackPanel>
+                                        <Image Grid.Row="1" Source="{Binding Section.Image}" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Vertical">
+                                <TextBlock Text="Teacher" FontSize="20" Foreground="White"/>
+                                <Grid Height="350">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="0">
+                                        <TextBlock Text="{Binding Teacher.User.Name}" FontSize="15" Foreground="White"/>
+                                        <TextBlock Text="{Binding Teacher.User.Surname}" FontSize="15" Foreground="White"/>
+                                        <TextBlock Text="{Binding Teacher.User.Authorization.Login}" FontSize="15" Foreground="White"/>
+                                        <TextBlock Text="{Binding Teacher.TypeTeacher.Type}" FontSize="15" Foreground="White"/>
+                                        <TextBlock Text="{Binding Teacher.isActive}" FontSize="15" Foreground="White"/>
+                                    </StackPanel>
+                                    <Image Grid.Row="1" Source="{Binding Teacher.User.Image}" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

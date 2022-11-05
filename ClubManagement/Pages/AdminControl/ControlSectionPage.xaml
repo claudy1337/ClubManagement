@@ -21,11 +21,11 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="txtEditOrAdd" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1">
-                    <Grid Height="260">
+                    <Grid Height="245">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -66,7 +66,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top">
                     <Grid Width="400">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>

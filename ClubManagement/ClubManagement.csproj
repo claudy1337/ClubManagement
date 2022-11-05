@@ -75,6 +75,7 @@
     <Compile Include="Data\Classes\DBConnection.cs" />
     <Compile Include="Data\Classes\DBMethodsFromSection.cs" />
     <Compile Include="Data\Classes\DBMethodsFromShedule.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromUser.cs" />
     <Compile Include="Data\Model\Authorization.cs">
       <DependentUpon>Model1.tt</DependentUpon>

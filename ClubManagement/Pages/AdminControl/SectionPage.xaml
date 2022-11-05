@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClubManagement.Pages.AdminControl"
       mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="660"
+       d:DesignHeight="360" d:DesignWidth="660"
       Title="SectionPage"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
       FontFamily="Poppins"
@@ -34,7 +34,7 @@
             </Grid>
 
         </StackPanel>
-        <ListView x:Name="lstvSection" Grid.Column="1" Width="465" Height="360" SelectionChanged="lstvSection_SelectionChanged">
+        <ListView x:Name="lstvSection" Grid.Column="1" SelectionChanged="lstvSection_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="460" Height="360">

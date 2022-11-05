@@ -5,10 +5,81 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClubManagement.Pages.AdminControl"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ControlTeacherPage">
+      d:DesignHeight="360" d:DesignWidth="660"
+      Title="ControlTeacherPage"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      FontFamily="Poppins"
+      Background="White">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="390"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10" Orientation="Vertical">
+            <Grid Height="340">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1">
+                    <Grid Height="230" Width="370">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBox x:Name="txtName"
+                                     Text="{Binding User.Name}"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Имя" Width="170"/>
+                            <TextBox x:Name="txtSurname"
+                                     Text="{Binding User.Surname}"
+                                     Margin="0,15,0,15"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Фамилия" Width="170"/>
+                            <TextBox x:Name="txtPatronymic"
+                                     Text="{Binding User.Patronymic}"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Отчество" Width="170"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBox x:Name="txtLogin"
+                                     Text="{Binding User.Authorization.Login}"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Логин" Width="170"/>
+                            <TextBox x:Name="txtPassword"
+                                     Text="{Binding User.Authorization.Password}"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Логин" Width="170"
+                                     Margin="0,15,0,15"/>
+                            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                      x:Name="cbTypeTeacher"
+                                      SelectionChanged="cbTypeTeacher_SelectionChanged" 
+                                      DisplayMemberPath="Type" Height="50"
+                                      material:HintAssist.Hint="Тип Учителя"/>
+                            
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <TextBlock x:Name="txtEditOrAdd" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top">
+                    <CheckBox x:Name="CBIsActice" 
+                              Checked="CBIsActice_Checked"
+                              Margin="10,0,10,0" 
+                              Content="isActive" 
+                              Grid.Row="2"
+                              FontSize="15"/>
+                    <Button  x:Name="btnEditOrAdd"
+                             Width="130"
+                             Margin="50,0,0,0"
+                             Click="btnEditOrAdd_Click"
+                             Grid.Row="2" VerticalAlignment="Center"/>
+
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Image Source="{Binding User.Image}" Grid.Column="1" Margin="10" RenderOptions.BitmapScalingMode="HighQuality" x:Name="imgTeacher" MouseLeftButtonDown="imgTeacher_MouseLeftButtonDown"/>
     </Grid>
 </Page>

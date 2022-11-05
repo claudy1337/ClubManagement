@@ -36,11 +36,11 @@
                               Width="180"
                               Height="50"
                               material:HintAssist.Hint="Активный">
-                        <TextBlock Text="Активный" Foreground="Black"/>
-                        <TextBlock Text="Не Активный" Foreground="Black"/>
+                        <TextBlock Text="Активный"/>
+                        <TextBlock Text="Не Активный"/>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Button Content="Add New" x:Name="btnAdd" Click="btnAdd_Click" Width="130"/>
                     <TextBlock Text="Clear" HorizontalAlignment="Right" FontSize="15" Margin="0,5,0,0" x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown"/>
                 </StackPanel>
@@ -60,7 +60,7 @@
                             <TextBlock Text="{Binding TypeTeacher.Type}" FontSize="25" />
                             <TextBlock Text="{Binding User.Name}" FontSize="25" Margin="0,15,0,15" />
                             <TextBlock Text="{Binding User.Surname}" FontSize="25" Margin="0,0,0,15"/>
-                            <TextBlock Text="{Binding User.Patronymic}" FontSize="25" Foreground="White"/>
+                            <TextBlock Text="{Binding User.Patronymic}" FontSize="25"/>
                             <TextBlock Text="{Binding User.Authorization.Login}" FontSize="25" Margin="0,15,0,15"/>
                             <TextBlock Text="{Binding isActive}" FontSize="25"/>
                         </StackPanel>

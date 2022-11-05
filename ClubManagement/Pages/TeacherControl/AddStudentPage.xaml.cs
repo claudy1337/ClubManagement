@@ -34,8 +34,8 @@ namespace ClubManagement.Pages.TeacherControl
         }
         private void BindingData()
         {
-            CBClass.ItemsSource = DBConnection.connect.Class.ToList();
-            CBCharacter.ItemsSource = DBConnection.connect.Class.ToList();
+            CBClass.ItemsSource = DBConnection.connect.Number.ToList();
+            CBCharacter.ItemsSource = DBConnection.connect.Сharacter.ToList();
         }
 
         private void imgStudent_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -11,6 +11,61 @@
       Title="EditStudentPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"> 
+            <TextBox
+                     Margin="0,15,0,0"
+                     x:Name="txtName"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Имя" Width="220"/>
+            <TextBox
+                     Margin="0,15,0,15"
+                     x:Name="txtSurname"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Фамилия" Width="220"/>
+
+            <TextBox x:Name="txtPatronymic"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Отчество" Width="220"/>
+            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                      x:Name="CBClass" DisplayMemberPath="Number"
+                      material:HintAssist.Hint="Класс"
+                      Margin="0,15,0,0"
+                      Foreground="Black"
+                      Height="50"/>
+            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                      x:Name="CBCharacter" DisplayMemberPath="Сharacter"
+                      material:HintAssist.Hint="Буква"
+                      Foreground="Black"
+                      Margin="0,15,0,25"
+                      Height="50"/>
+        </StackPanel>
+        <ListView Grid.Column="1" Margin="10" x:Name="lstvStudent" SelectionChanged="lstvStudent_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <Grid Width="400">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Image}" Margin="5" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBlock Text="{Binding Name}" FontSize="25" Margin="0,5,0,10"/>
+                                <TextBlock Text="{Binding Surname}" FontSize="25"/>
+                                <TextBlock Text="{Binding Patronymic}" FontSize="25" Margin="0,10,0,10"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Class.Number.Number}" FontSize="25" />
+                                    <TextBlock Text="{Binding Class.Сharacter.Сharacter}" FontSize="25"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -12,21 +12,14 @@ namespace ClubManagement.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Class
+    public partial class StudentSection
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Class()
-        {
-            this.Student = new HashSet<Student>();
-        }
+        public int id { get; set; }
+        public Nullable<int> SectionID { get; set; }
+        public Nullable<int> StudentID { get; set; }
+        public Nullable<bool> isActive { get; set; }
     
-        public int ID { get; set; }
-        public Nullable<int> NumberID { get; set; }
-        public Nullable<int> СharacterID { get; set; }
-    
-        public virtual Number Number { get; set; }
-        public virtual Сharacter Сharacter { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student { get; set; }
+        public virtual Section Section { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

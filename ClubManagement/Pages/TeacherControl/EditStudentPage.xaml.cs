@@ -30,5 +30,10 @@ namespace ClubManagement.Pages.TeacherControl
             CurrentUser = currentUser;
             InitializeComponent();
         }
+
+        private void lstvStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectStudent = lstvStudent.SelectedItem as Student;
+        }
     }
 }

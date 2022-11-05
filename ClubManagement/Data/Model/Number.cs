@@ -12,26 +12,18 @@ namespace ClubManagement.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Number
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Number()
         {
-            this.History = new HashSet<History>();
-            this.StudentSection = new HashSet<StudentSection>();
+            this.Class = new HashSet<Class>();
         }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Patronymic { get; set; }
-        public int ClassID { get; set; }
-        public byte[] Image { get; set; }
+        public int id { get; set; }
+        public Nullable<int> Number1 { get; set; }
     
-        public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> History { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentSection> StudentSection { get; set; }
+        public virtual ICollection<Class> Class { get; set; }
     }
 }

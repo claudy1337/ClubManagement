@@ -17,8 +17,8 @@ namespace ClubManagement.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
         {
-            this.Section_Student = new HashSet<Section_Student>();
             this.Section_Teacher = new HashSet<Section_Teacher>();
+            this.StudentSection = new HashSet<StudentSection>();
         }
     
         public int ID { get; set; }
@@ -32,8 +32,8 @@ namespace ClubManagement.Data.Model
         public virtual Cabinet Cabinet { get; set; }
         public virtual Schedule Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section_Student> Section_Student { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section_Teacher> Section_Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentSection> StudentSection { get; set; }
     }
 }

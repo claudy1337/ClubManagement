@@ -68,7 +68,7 @@
                     <CheckBox x:Name="CBIsActice" 
                               Checked="CBIsActice_Checked"
                               Margin="10,0,10,0" 
-                              Content="isActive" 
+                              Content="Активный" 
                               Grid.Row="2"
                               FontSize="15"/>
                     <Button  x:Name="btnEditOrAdd"

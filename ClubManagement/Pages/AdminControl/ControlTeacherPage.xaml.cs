@@ -48,7 +48,7 @@ namespace ClubManagement.Pages.AdminControl
         {
             this.DataContext = CurretTeacher;
             txtEditOrAdd.Text = "Редактировать Учителя";
-            btnEditOrAdd.Content = "Edit";
+            btnEditOrAdd.Content = "Редактировать";
             cbTypeTeacher.SelectedIndex = CurretTeacher.TypeTeacher.id;
             if (CurretTeacher.isActive == true)
                 CBIsActice.IsChecked = true;

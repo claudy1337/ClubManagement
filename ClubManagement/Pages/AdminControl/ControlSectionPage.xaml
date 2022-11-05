@@ -74,8 +74,8 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox x:Name="CBIsActice" 
                           Checked="CBIsActice_Checked"
-                          Margin="10,0,10,0" 
-                          Content="isActive"
+                          Margin="10,0,0,0" 
+                          Content="Активный"
                           Grid.Column="0"
                           FontSize="15"/>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

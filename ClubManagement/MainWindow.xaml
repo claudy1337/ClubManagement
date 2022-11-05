@@ -49,12 +49,12 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
-                    <StackPanel Orientation="Vertical">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0" >
+                    <StackPanel Orientation="Vertical" x:Name="clStudent" MouseLeftButtonDown="clStudent_MouseLeftButtonDown">
                         <material:PackIcon Kind="AccountSchool" Width="45" Height="45" HorizontalAlignment="Center"/>
                         <TextBlock Text="Студенты" HorizontalAlignment="Center" FontSize="25"/>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="25,0,0,0">
+                    <StackPanel Orientation="Vertical" Margin="25,0,0,0" x:Name="clSections" MouseLeftButtonDown="clSections_MouseLeftButtonDown">
                         <material:PackIcon Kind="SetCenter" Width="45" Height="45" HorizontalAlignment="Center"/>
                         <TextBlock Text="Секции" HorizontalAlignment="Center" FontSize="25" />
                     </StackPanel>

@@ -77,6 +77,7 @@
     <Compile Include="Data\Classes\DBMethodsFromSection.cs" />
     <Compile Include="Data\Classes\DBMethodsFromSectionTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromShedule.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromStudent.cs" />
     <Compile Include="Data\Classes\DBMethodsFromTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromUser.cs" />
     <Compile Include="Data\Model\Authorization.cs">
@@ -175,6 +176,18 @@
     <Compile Include="Pages\StatisticsPage.xaml.cs">
       <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\StudentPage.xaml.cs">
+      <DependentUpon>StudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherControl\AddStudentPage.xaml.cs">
+      <DependentUpon>AddStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherControl\ControlStudentPage.xaml.cs">
+      <DependentUpon>ControlStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherControl\EditStudentPage.xaml.cs">
+      <DependentUpon>EditStudentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windws\Auth.xaml.cs">
       <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
@@ -230,6 +243,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherControl\AddStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherControl\ControlStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherControl\EditStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windws\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,9 +298,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\TeacherControl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Data\Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

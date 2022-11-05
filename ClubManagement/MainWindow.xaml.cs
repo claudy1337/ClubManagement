@@ -17,6 +17,8 @@ using ClubManagement.Data.Classes;
 using ClubManagement.Data.Model;
 using ClubManagement.Pages;
 using ClubManagement.Windws;
+using ClubManagement.Pages.TeacherControl;
+using ClubManagement.Pages.AdminControl;
 
 namespace ClubManagement
 {
@@ -34,6 +36,11 @@ namespace ClubManagement
             {
                 clControl.Visibility = Visibility.Hidden;
                 clStatistics.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                clStudent.Visibility = Visibility.Hidden;
+                clSections.Visibility = Visibility.Hidden;
             }
             txtWelcome.Text = $"Welcome: {CurrentUser.Role.Title} " + CurrentUser.Name;
             fContainer.Navigate(new AccountPage(CurrentUser));
@@ -78,6 +85,16 @@ namespace ClubManagement
         }
 
         private void clStatistics_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void clStudent_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainer.Navigate(new StudentPage(CurrentUser));
+        }
+
+        private void clSections_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
         }

@@ -41,8 +41,8 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <Button Content="Add New" x:Name="btnAdd" Click="btnAdd_Click" Width="130"/>
-                    <TextBlock Text="Clear" HorizontalAlignment="Right" FontSize="15" Margin="0,5,0,0" x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown"/>
+                    <Button Content="Добавить" x:Name="btnAdd" Click="btnAdd_Click" Width="130"/>
+                    <TextBlock Text="Очистить" HorizontalAlignment="Right" FontSize="15" Margin="0,5,0,0" x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown"/>
                 </StackPanel>
             </Grid>
 

@@ -14,12 +14,12 @@
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Center" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Teacher: " FontSize="15"/>
+                    <TextBlock Text="Учитель: " FontSize="15"/>
                     <TextBlock x:Name="txtName" FontSize="15"/>
                 </StackPanel>
                 <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
@@ -34,7 +34,7 @@
                       SelectionChanged="cbTeacher_SelectionChanged"
                       DisplayMemberPath="Title" Height="50"
                       material:HintAssist.Hint="День Недели"/>
-                <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add" Margin="0,20,0,0"/>
+                <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Добавить" Margin="0,20,0,0"/>
             </StackPanel>
             <ListView Grid.Column="1" x:Name="lstvAppoint">
                 <ListView.ItemTemplate>
@@ -45,7 +45,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock Text="Section" FontSize="20" Foreground="White"/>
+                                <TextBlock Text="Section" FontSize="20"/>
                                 <StackPanel Height="350">
                                     <Grid Height="350">
                                         <Grid.RowDefinitions>
@@ -53,31 +53,31 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Section.Title}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.Schedule.TimeMinutes.Min}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.Schedule.TimeHour.Hour}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.Schedule.DayOfWeeks.Title}" FontSize="15" Foreground="White"/>
-                                            <TextBlock Text="{Binding Section.isActive}" FontSize="15" Foreground="White"/>
+                                            <TextBlock Text="{Binding Section.Title}" FontSize="15" />
+                                            <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="15" />
+                                            <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="15" />
+                                            <TextBlock Text="{Binding Section.Schedule.TimeMinutes.Min}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.Schedule.TimeHour.Hour}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.Schedule.DayOfWeeks.Title}" FontSize="15" />
+                                            <TextBlock Text="{Binding Section.isActive}" FontSize="15"/>
                                         </StackPanel>
                                         <Image Grid.Row="1" Source="{Binding Section.Image}" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical">
-                                <TextBlock Text="Teacher" FontSize="20" Foreground="White"/>
+                                <TextBlock Text="Teacher" FontSize="20" />
                                 <Grid Height="350">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0">
-                                        <TextBlock Text="{Binding Teacher.User.Name}" FontSize="15" Foreground="White"/>
-                                        <TextBlock Text="{Binding Teacher.User.Surname}" FontSize="15" Foreground="White"/>
-                                        <TextBlock Text="{Binding Teacher.User.Authorization.Login}" FontSize="15" Foreground="White"/>
-                                        <TextBlock Text="{Binding Teacher.TypeTeacher.Type}" FontSize="15" Foreground="White"/>
-                                        <TextBlock Text="{Binding Teacher.isActive}" FontSize="15" Foreground="White"/>
+                                        <TextBlock Text="{Binding Teacher.User.Name}" FontSize="15"/>
+                                        <TextBlock Text="{Binding Teacher.User.Surname}" FontSize="15" />
+                                        <TextBlock Text="{Binding Teacher.User.Authorization.Login}" FontSize="15" />
+                                        <TextBlock Text="{Binding Teacher.TypeTeacher.Type}" FontSize="15" />
+                                        <TextBlock Text="{Binding Teacher.isActive}" FontSize="15"/>
                                     </StackPanel>
                                     <Image Grid.Row="1" Source="{Binding Teacher.User.Image}" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
                                 </Grid>

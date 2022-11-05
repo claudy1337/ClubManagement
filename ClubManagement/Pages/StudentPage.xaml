@@ -1,0 +1,38 @@
+﻿<Page x:Class="ClubManagement.Pages.TeacherControl.StudentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClubManagement.Pages.TeacherControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="660"
+      Background="White"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="StudentPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" x:Name="clAddStudent" MouseLeftButtonDown="clAddStudent_MouseLeftButtonDown">
+                <material:PackIcon Kind="AccountMultiplePlus"  Width="45" Height="45" HorizontalAlignment="Center" />
+                <TextBlock Text="Добавить" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="25,0,25,0" x:Name="clControlStudent" MouseLeftButtonDown="clControlStudent_MouseLeftButtonDown">
+                <material:PackIcon Kind="BookEdit"  Width="45" Height="45" HorizontalAlignment="Center" />
+                <TextBlock Text="Управление" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" x:Name="clEditStudent" MouseLeftButtonDown="clEditStudent_MouseLeftButtonDown">
+                <material:PackIcon Kind="AccountEdit"  Width="45" Height="45" HorizontalAlignment="Center" />
+                <TextBlock Text="Изменение" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+        <Frame 
+               BorderBrush="Transparent"
+               Grid.Row="2"
+               Name="fContainerStudentControl"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

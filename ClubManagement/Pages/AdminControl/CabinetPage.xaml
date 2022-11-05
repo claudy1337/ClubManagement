@@ -23,8 +23,8 @@
                      x:Name="txtTitle"
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="№ Кабинета" Width="220" Height="50"/>
-            <CheckBox Content="State" Checked="CBState_Checked" x:Name="CBState" FontSize="20" Margin="0,15,0,40"/>
-            <Button x:Name="btnAddCabinet" Width="180" Click="btnAddCabinet_Click" Grid.Row="2" Content="Add" HorizontalAlignment="Center"/>
+            <CheckBox Content="Активный" Checked="CBState_Checked" x:Name="CBState" FontSize="20" Margin="0,15,0,40"/>
+            <Button x:Name="btnAddCabinet" Width="180" Click="btnAddCabinet_Click" Grid.Row="2" Content="Добавить" HorizontalAlignment="Center"/>
 
         </StackPanel>
         <ListView x:Name="lstvCabinet" Margin="10" Grid.Column="1" SelectionChanged="lstvCabinet_SelectionChanged">

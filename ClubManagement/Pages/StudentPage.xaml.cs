@@ -44,5 +44,10 @@ namespace ClubManagement.Pages.TeacherControl
         {
             fContainerStudentControl.Navigate(new EditStudentPage(CurrentUser));
         }
+
+        private void clAppoint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerStudentControl.Navigate(new AppointPage(CurrentUser));
+        }
     }
 }

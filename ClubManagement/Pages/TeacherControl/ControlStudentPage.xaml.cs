@@ -41,5 +41,25 @@ namespace ClubManagement.Pages.TeacherControl
             var selectTeacher = cbSectionTeacher.SelectedItem as Section_Teacher;
             DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s=>s.SectionID == selectTeacher.Section.ID).ToList();
         }
+
+        private void DGSectionStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void btnDeleteSectionInStudent_Click(object sender, RoutedEventArgs e)
+        {
+           try
+           {
+                var selectStudent = DGSectionStudents.SelectedItem as StudentSection;
+                selectStudent.isActive = false;
+                DBConnection.connect.SaveChanges();
+            }
+           catch(NullReferenceException)
+           {
+                MessageBox.Show("студент не выбран");
+                return;
+           }
+        }
     }
 }

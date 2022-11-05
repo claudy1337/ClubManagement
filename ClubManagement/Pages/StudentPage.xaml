@@ -28,6 +28,10 @@
                 <material:PackIcon Kind="AccountEdit"  Width="45" Height="45" HorizontalAlignment="Center" />
                 <TextBlock Text="Изменение" HorizontalAlignment="Center" FontSize="20"/>
             </StackPanel>
+            <StackPanel Orientation="Vertical" x:Name="clAppoint" MouseLeftButtonDown="clAppoint_MouseLeftButtonDown" Margin="25,0,0,0">
+                <material:PackIcon Kind="Cogs"  Width="45" Height="45" HorizontalAlignment="Center" />
+                <TextBlock Text="Назначить" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
         </StackPanel>
         <Frame 
                BorderBrush="Transparent"

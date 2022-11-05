@@ -188,6 +188,9 @@
     <Compile Include="Pages\TeacherControl\AddStudentPage.xaml.cs">
       <DependentUpon>AddStudentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TeacherControl\AppointPage.xaml.cs">
+      <DependentUpon>AppointPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TeacherControl\ControlStudentPage.xaml.cs">
       <DependentUpon>ControlStudentPage.xaml</DependentUpon>
     </Compile>
@@ -254,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TeacherControl\AddStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherControl\AppointPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

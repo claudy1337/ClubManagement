@@ -30,7 +30,6 @@ namespace ClubManagement.Data.Model
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<DayOfWeeks> DayOfWeeks { get; set; }
         public virtual DbSet<History> History { get; set; }
-        public virtual DbSet<Number> Number { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<Section> Section { get; set; }
@@ -42,7 +41,8 @@ namespace ClubManagement.Data.Model
         public virtual DbSet<TimeMinutes> TimeMinutes { get; set; }
         public virtual DbSet<TypeTeacher> TypeTeacher { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Сharacter> Сharacter { get; set; }
         public virtual DbSet<StudentSection> StudentSection { get; set; }
+        public virtual DbSet<Character> Character { get; set; }
+        public virtual DbSet<Number> Number { get; set; }
     }
 }

@@ -12,16 +12,16 @@ namespace ClubManagement.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Сharacter
+    public partial class Character
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Сharacter()
+        public Character()
         {
             this.Class = new HashSet<Class>();
         }
     
         public int id { get; set; }
-        public string Сharacter1 { get; set; }
+        public string Сharacters { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Class { get; set; }

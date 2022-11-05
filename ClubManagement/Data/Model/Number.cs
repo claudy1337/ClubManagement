@@ -21,7 +21,7 @@ namespace ClubManagement.Data.Model
         }
     
         public int id { get; set; }
-        public Nullable<int> Number1 { get; set; }
+        public Nullable<int> Numbers { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Class { get; set; }

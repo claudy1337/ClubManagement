@@ -8,7 +8,7 @@
       d:DesignHeight="360" d:DesignWidth="660"
       Title="AddStudentPage"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
-      >
+      Background="White">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,11 +31,11 @@
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="Отчество" Width="220"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      x:Name="CBClass" DisplayMemberPath="Number"
+                      x:Name="CBClass" DisplayMemberPath="Numbers"
                       Margin="0,15,0,0"
                       material:HintAssist.Hint="Класс"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      x:Name="CBCharacter" DisplayMemberPath="Сharacter"
+                      x:Name="CBCharacter" DisplayMemberPath="Сharacters"
                       material:HintAssist.Hint="Буква"
                       Foreground="Black"
                       Margin="0,15,0,25"

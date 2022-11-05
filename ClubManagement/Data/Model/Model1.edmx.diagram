@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="schoolModel.Class" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.DayOfWeeks" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.History" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="schoolModel.Number" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.Role" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.Schedule" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.Section" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
@@ -22,12 +21,9 @@
         <EntityTypeShape EntityType="schoolModel.TimeMinutes" Width="1.5" PointX="3.75" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.TypeTeacher" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.User" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="schoolModel.Сharacter" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
         <AssociationConnector Association="schoolModel.FK_User_Authorization" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_History_Cabinet" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Section_Cabinet" ManuallyRouted="false" />
-        <AssociationConnector Association="schoolModel.FK_Class_Number" ManuallyRouted="false" />
-        <AssociationConnector Association="schoolModel.FK_Class_Сharacter" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Student_Class" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Schedule_DayOfWeek" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_History_Student" ManuallyRouted="false" />
@@ -43,6 +39,10 @@
         <EntityTypeShape EntityType="schoolModel.StudentSection" Width="1.5" PointX="10.5" PointY="15.75" />
         <AssociationConnector Association="schoolModel.FK_StudentSection_Section" />
         <AssociationConnector Association="schoolModel.FK_StudentSection_Student" />
+        <EntityTypeShape EntityType="schoolModel.Character" Width="1.5" PointX="0.75" PointY="9.25" />
+        <AssociationConnector Association="schoolModel.FK_Class_Сharacter1" />
+        <EntityTypeShape EntityType="schoolModel.Number" Width="1.5" PointX="0.75" PointY="13.125" />
+        <AssociationConnector Association="schoolModel.FK_Class_Number" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

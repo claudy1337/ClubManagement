@@ -22,11 +22,19 @@ namespace ClubManagement.Data.Classes
         {
             return GetStudents().FirstOrDefault(s=>s.Name == name && s.Patronymic == patronymic && s.Surname == surname && s.ClassID == classId);
         }
-        
-        public static void AddStudent(string name, string surname, string patronymic, int classId, byte[] image)
+        public static ObservableCollection<Class> GetClasses()
         {
-            var getstudent  = GetStudent(name, surname, patronymic, classId);
-            if (getstudent == null)
+            return new ObservableCollection<Class>(DBConnection.connect.Class);
+        }
+        public static Class GetClasses(int idNumber, int idCharacter)
+        {
+            return GetClasses().FirstOrDefault(c=>c.NumberID == idNumber && c.СharacterID == idCharacter);
+        }
+        public static void AddStudent(int numberid, int characterid, string name, string surname, string patronymic, byte[] image)
+        {
+            var getClass = GetClasses(numberid, characterid);
+            var getstudent  = GetStudent(name, surname, patronymic, getClass.ID);
+            if (getstudent == null && getClass != null)
             {
                 Student student = new Student
                 {
@@ -34,7 +42,7 @@ namespace ClubManagement.Data.Classes
                     Surname = surname,
                     Patronymic = patronymic,
                     Image = image,
-                    ClassID = classId
+                    ClassID = getClass.ID
                 };
                 DBConnection.connect.Student.Add(student);
                 DBConnection.connect.SaveChanges();
@@ -42,7 +50,7 @@ namespace ClubManagement.Data.Classes
             }
             else
             {
-                MessageBox.Show("студент уже существует");
+                MessageBox.Show("студент уже существует или класс не собран");
             }
             
         }

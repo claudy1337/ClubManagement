@@ -43,29 +43,38 @@
                       Margin="0,15,0,25"
                       Height="50"/>
         </StackPanel>
-        <ListView Grid.Column="1" Margin="10" x:Name="lstvStudent" SelectionChanged="lstvStudent_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <Grid Width="400">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Image}" Margin="5" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-                                <TextBlock Text="{Binding Name}" FontSize="25" Margin="0,5,0,10"/>
-                                <TextBlock Text="{Binding Surname}" FontSize="25"/>
-                                <TextBlock Text="{Binding Patronymic}" FontSize="25" Margin="0,10,0,10"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Class.Number.Number}" FontSize="25" />
-                                    <TextBlock Text="{Binding Class.Сharacter.Сharacter}" FontSize="25"/>
-                                </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Column="1" Grid.Row="0" x:Name="lstvStudent" SelectionChanged="lstvStudent_SelectionChanged" Height="300" Width="440">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Grid Width="440">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Image}" Margin="5" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                                        <TextBlock Text="sdsdsd" FontSize="25"/>
+                                        <TextBlock Text="sdsds" FontSize="25" Margin="0,5,0,5"/>
+                                        <TextBlock Text="sdsd" FontSize="25" Margin="0,0,0,10"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Class.Number.Numbers}" FontSize="25" />
+                                            <TextBlock Text="{Binding Class.Character.Сharacters}" FontSize="25"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
                             </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="1" Content="Применить" x:Name="btnEditStudent" Click="btnEditStudent_Click" VerticalAlignment="Top"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

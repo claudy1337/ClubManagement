@@ -29,11 +29,17 @@ namespace ClubManagement.Pages.TeacherControl
         {
             CurrentUser = currentUser;
             InitializeComponent();
+            lstvStudent.ItemsSource = DBConnection.connect.Student.ToList();
         }
 
         private void lstvStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectStudent = lstvStudent.SelectedItem as Student;
+        }
+
+        private void btnEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

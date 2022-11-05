@@ -21,6 +21,13 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="bit" />
         </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Сharacters" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ID" />
@@ -51,7 +58,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Number" Type="int" />
+          <Property Name="Numbers" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -162,13 +169,6 @@
           <Property Name="AuthorizationID" Type="int" Nullable="false" />
           <Property Name="Image" Type="image" />
         </EntityType>
-        <EntityType Name="Сharacter">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Сharacter" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <Association Name="FK_Class_Number">
           <End Role="Number" Type="Self.Number" Multiplicity="0..1" />
           <End Role="Class" Type="Self.Class" Multiplicity="*" />
@@ -182,10 +182,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Class_Сharacter">
-          <End Role="Сharacter" Type="Self.Сharacter" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="0..1" />
           <End Role="Class" Type="Self.Class" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Сharacter">
+            <Principal Role="Character">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Class">
@@ -400,6 +400,7 @@
         <EntityContainer Name="Хранилище schoolModelContainer">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cabinet" EntityType="Self.Cabinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DayOfWeeks" EntityType="Self.DayOfWeeks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
@@ -416,13 +417,12 @@
           <EntitySet Name="TimeMinutes" EntityType="Self.TimeMinutes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeTeacher" EntityType="Self.TypeTeacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Сharacter" EntityType="Self.Сharacter" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Class_Number" Association="Self.FK_Class_Number">
             <End Role="Number" EntitySet="Number" />
             <End Role="Class" EntitySet="Class" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_Сharacter" Association="Self.FK_Class_Сharacter">
-            <End Role="Сharacter" EntitySet="Сharacter" />
+            <End Role="Character" EntitySet="Character" />
             <End Role="Class" EntitySet="Class" />
           </AssociationSet>
           <AssociationSet Name="FK_History_Cabinet" Association="Self.FK_History_Cabinet">
@@ -524,9 +524,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumberID" Type="Int32" />
           <Property Name="СharacterID" Type="Int32" />
-          <NavigationProperty Name="Number" Relationship="Self.FK_Class_Number" FromRole="Class" ToRole="Number" />
-          <NavigationProperty Name="Сharacter" Relationship="Self.FK_Class_Сharacter" FromRole="Class" ToRole="Сharacter" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Student_Class" FromRole="Class" ToRole="Student" />
+          <NavigationProperty Name="Character" Relationship="schoolModel.FK_Class_Сharacter1" FromRole="Class" ToRole="Character" />
+          <NavigationProperty Name="Number" Relationship="schoolModel.FK_Class_Number" FromRole="Class" ToRole="Number" />
         </EntityType>
         <EntityType Name="DayOfWeeks">
           <Key>
@@ -548,14 +548,6 @@
           <NavigationProperty Name="Cabinet" Relationship="Self.FK_History_Cabinet" FromRole="History" ToRole="Cabinet" />
           <NavigationProperty Name="Student" Relationship="Self.FK_History_Student" FromRole="History" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_History_Teacher" FromRole="History" ToRole="Teacher" />
-        </EntityType>
-        <EntityType Name="Number">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number1" Type="Int32" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Number" FromRole="Number" ToRole="Class" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -681,14 +673,6 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
         </EntityType>
-        <EntityType Name="Сharacter">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Сharacter1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Сharacter" FromRole="Сharacter" ToRole="Class" />
-        </EntityType>
         <Association Name="FK_User_Authorization">
           <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -722,30 +706,6 @@
             </Principal>
             <Dependent Role="Section">
               <PropertyRef Name="CabinetID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_Number">
-          <End Role="Number" Type="Self.Number" Multiplicity="0..1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Number">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="NumberID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_Сharacter">
-          <End Role="Сharacter" Type="Self.Сharacter" Multiplicity="0..1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Сharacter">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="СharacterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -899,7 +859,6 @@
           <EntitySet Name="Class" EntityType="Self.Class" />
           <EntitySet Name="DayOfWeeks" EntityType="Self.DayOfWeeks" />
           <EntitySet Name="History" EntityType="Self.History" />
-          <EntitySet Name="Number" EntityType="Self.Number" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
           <EntitySet Name="Section" EntityType="Self.Section" />
@@ -911,7 +870,6 @@
           <EntitySet Name="TimeMinutes" EntityType="Self.TimeMinutes" />
           <EntitySet Name="TypeTeacher" EntityType="Self.TypeTeacher" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Сharacter" EntityType="Self.Сharacter" />
           <AssociationSet Name="FK_User_Authorization" Association="Self.FK_User_Authorization">
             <End Role="Authorization" EntitySet="Authorization" />
             <End Role="User" EntitySet="User" />
@@ -923,14 +881,6 @@
           <AssociationSet Name="FK_Section_Cabinet" Association="Self.FK_Section_Cabinet">
             <End Role="Cabinet" EntitySet="Cabinet" />
             <End Role="Section" EntitySet="Section" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_Number" Association="Self.FK_Class_Number">
-            <End Role="Number" EntitySet="Number" />
-            <End Role="Class" EntitySet="Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_Сharacter" Association="Self.FK_Class_Сharacter">
-            <End Role="Сharacter" EntitySet="Сharacter" />
-            <End Role="Class" EntitySet="Class" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
             <End Role="Class" EntitySet="Class" />
@@ -989,6 +939,16 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="StudentSection" EntitySet="StudentSection" />
           </AssociationSet>
+          <EntitySet Name="Character" EntityType="schoolModel.Character" />
+          <AssociationSet Name="FK_Class_Сharacter1" Association="schoolModel.FK_Class_Сharacter1">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <EntitySet Name="Number" EntityType="schoolModel.Number" />
+          <AssociationSet Name="FK_Class_Number" Association="schoolModel.FK_Class_Number">
+            <End Role="Number" EntitySet="Number" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="StudentSection">
           <Key>
@@ -1022,6 +982,46 @@
             </Principal>
             <Dependent Role="StudentSection">
               <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Сharacters" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Class" Relationship="schoolModel.FK_Class_Сharacter1" FromRole="Character" ToRole="Class" />
+        </EntityType>
+        <Association Name="FK_Class_Сharacter1">
+          <End Type="schoolModel.Character" Role="Character" Multiplicity="0..1" />
+          <End Type="schoolModel.Class" Role="Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="СharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Number">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numbers" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="schoolModel.FK_Class_Number" FromRole="Number" ToRole="Class" />
+        </EntityType>
+        <Association Name="FK_Class_Number">
+          <End Type="schoolModel.Number" Role="Number" Multiplicity="0..1" />
+          <End Type="schoolModel.Class" Role="Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Number">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="NumberID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1074,14 +1074,6 @@
                 <ScalarProperty Name="CabinetID" ColumnName="CabinetID" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Number">
-            <EntityTypeMapping TypeName="schoolModel.Number">
-              <MappingFragment StoreEntitySet="Number">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Number1" ColumnName="Number" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1196,20 +1188,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Сharacter">
-            <EntityTypeMapping TypeName="schoolModel.Сharacter">
-              <MappingFragment StoreEntitySet="Сharacter">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Сharacter1" ColumnName="Сharacter" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="StudentSection">
             <EntityTypeMapping TypeName="schoolModel.StudentSection">
               <MappingFragment StoreEntitySet="StudentSection">
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Character">
+            <EntityTypeMapping TypeName="schoolModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Сharacters" ColumnName="Сharacters" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Number">
+            <EntityTypeMapping TypeName="schoolModel.Number">
+              <MappingFragment StoreEntitySet="Number">
+                <ScalarProperty Name="Numbers" ColumnName="Numbers" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

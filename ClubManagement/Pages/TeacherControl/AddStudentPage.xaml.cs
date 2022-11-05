@@ -35,7 +35,7 @@ namespace ClubManagement.Pages.TeacherControl
         private void BindingData()
         {
             CBClass.ItemsSource = DBConnection.connect.Number.ToList();
-            CBCharacter.ItemsSource = DBConnection.connect.Сharacter.ToList();
+            CBCharacter.ItemsSource = DBConnection.connect.Character.ToList();
         }
 
         private void imgStudent_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -63,7 +63,10 @@ namespace ClubManagement.Pages.TeacherControl
             }
             else
             {
-                DBMethodsFromStudent.AddStudent(txtName.Text, txtSurname.Text, txtPatronymic.Text,2 ,image);
+                var selectNumber = CBClass.SelectedItem as Number;
+                var selectCharacter = CBCharacter.SelectedItem as Character;
+                DBMethodsFromStudent.AddStudent(selectNumber.id, selectCharacter.id ,txtName.Text, txtSurname.Text, txtPatronymic.Text, image);
+                NavigationService.Navigate(new AddStudentPage());
             }
         }
     }

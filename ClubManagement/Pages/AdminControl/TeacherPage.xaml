@@ -1,0 +1,72 @@
+﻿<Page x:Class="ClubManagement.Pages.AdminControl.TeacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClubManagement.Pages.AdminControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="360" d:DesignWidth="660"
+      Title="TeacherPage"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      FontFamily="Poppins"
+      Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10">
+            <Grid Height="350">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Управление Учителями" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                              x:Name="cbTypeTeacher" SelectionChanged="cbTypeTeacher_SelectionChanged" DisplayMemberPath="Type"
+                              Width="180"
+                              Height="50"
+                              material:HintAssist.Hint="Тип Учителя"/>
+                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                              Margin="0,15,0,0"                
+                              x:Name="cbActiveTeacher" SelectionChanged="cbActiveTeacher_SelectionChanged" DisplayMemberPath="Type"
+                              Width="180"
+                              Height="50"
+                              material:HintAssist.Hint="Активный">
+                        <TextBlock Text="Активный" Foreground="Black"/>
+                        <TextBlock Text="Не Активный" Foreground="Black"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Content="Add New" x:Name="btnAdd" Click="btnAdd_Click" Width="130"/>
+                    <TextBlock Text="Clear" HorizontalAlignment="Right" FontSize="15" Margin="0,5,0,0" x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown"/>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+        <ListView x:Name="lstvTeacher" Grid.Column="1" SelectionChanged="lstvTeacher_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="530" Height="350">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding User.Image}" Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
+                        <StackPanel Grid.Column="1" Margin="10" Orientation="Vertical">
+                            <TextBlock Text="{Binding TypeTeacher.Type}" FontSize="25" />
+                            <TextBlock Text="{Binding User.Name}" FontSize="25" Margin="0,15,0,15" />
+                            <TextBlock Text="{Binding User.Surname}" FontSize="25" Margin="0,0,0,15"/>
+                            <TextBlock Text="{Binding User.Patronymic}" FontSize="25" Foreground="White"/>
+                            <TextBlock Text="{Binding User.Authorization.Login}" FontSize="25" Margin="0,15,0,15"/>
+                            <TextBlock Text="{Binding isActive}" FontSize="25"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

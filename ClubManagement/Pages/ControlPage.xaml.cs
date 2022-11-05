@@ -28,6 +28,17 @@ namespace ClubManagement.Pages
         {
             CurrentUser = curentUser;
             InitializeComponent();
+            fContainerControl.Navigate(new SectionPage());
+        }
+
+        private void clSections_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerControl.Navigate(new SectionPage());
+        }
+
+        private void clTeacher_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fContainerControl.Navigate(new TeacherPage());
         }
     }
 }

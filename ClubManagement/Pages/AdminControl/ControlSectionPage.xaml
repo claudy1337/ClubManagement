@@ -1,0 +1,97 @@
+﻿<Page x:Class="ClubManagement.Pages.AdminControl.ControlSectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClubManagement.Pages.AdminControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="360" d:DesignWidth="660"
+      Title="ControlSectionPage"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      FontFamily="Poppins"
+      Background="White">
+   
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Grid Height="360">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="txtEditOrAdd" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="1">
+                    <Grid Height="260">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox
+                                     x:Name="txtTitle"
+                                     Text="{Binding Title}"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     material:HintAssist.Hint="Название" Width="180"/>
+                            <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                     x:Name="txtMaxCount"
+                                     MaxLength="2"
+                                     Margin="0,15,0,15"
+                                     Text="{Binding MaxCountOfVisitors}"
+                                     TextInput="txtMaxCount_TextInput"
+                                     material:HintAssist.Hint="Макс Кол Участников" Width="180"/>
+                           <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                     x:Name="cbCabinet" Text="{Binding Cabinet.Title}" 
+                                     DisplayMemberPath="Title" Height="50"
+                                     material:HintAssist.Hint="Кабинет"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                      x:Name="CBDayOfWeeks"
+                                      Width="180"
+                                      DisplayMemberPath="Title" Height="50"
+                                      material:HintAssist.Hint="День Недели"/>
+                            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                      x:Name="CBTimeHour"
+                                      Margin="0,15,0,15"
+                                      DisplayMemberPath="Hour" Height="50"
+                                      material:HintAssist.Hint="Часы"/>
+                            <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                      x:Name="CBTimeMin"
+                                      DisplayMemberPath="Min" Height="50"
+                                      material:HintAssist.Hint="Минуты"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Grid Width="400">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="CBIsActice" 
+                          Checked="CBIsActice_Checked"
+                          Margin="10,0,10,0" 
+                          Content="isActive"
+                          Grid.Column="0"
+                          FontSize="15"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button  x:Name="btnEditOrAdd" 
+                                     Click="btnEditOrAdd_Click"
+                                     Width="130"/>
+
+                            <Button x:Name="btnAddImage" 
+                                    Click="btnAddImage_Click" 
+                                    Content="Изображение" 
+                                    Width="130" Margin="15,0,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Image x:Name="imgSection" Source="/Resources/default_section.png/" Grid.Column="1" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Grid>
+</Page>

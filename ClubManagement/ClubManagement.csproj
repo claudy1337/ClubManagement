@@ -73,6 +73,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\Classes\DBConnection.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromSection.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromShedule.cs" />
     <Compile Include="Data\Classes\DBMethodsFromUser.cs" />
     <Compile Include="Data\Model\Authorization.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -146,6 +148,18 @@
     <Compile Include="Pages\AdminControl\AppointPage.xaml.cs">
       <DependentUpon>AppointPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminControl\ControlSectionPage.xaml.cs">
+      <DependentUpon>ControlSectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminControl\ControlTeacherPage.xaml.cs">
+      <DependentUpon>ControlTeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminControl\SectionPage.xaml.cs">
+      <DependentUpon>SectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminControl\TeacherPage.xaml.cs">
+      <DependentUpon>TeacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ControlPage.xaml.cs">
       <DependentUpon>ControlPage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +186,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AdminControl\AppointPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminControl\ControlSectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminControl\ControlTeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminControl\SectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminControl\TeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,7 +253,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="Pages\TeacherControl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Model\Model1.Context.tt">
@@ -236,6 +266,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\default_section.png" />
+    <Resource Include="Resources\default_user.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

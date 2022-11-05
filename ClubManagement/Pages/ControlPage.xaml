@@ -16,11 +16,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="clSections" MouseLeftButtonDown="clSections_MouseLeftButtonDown">
                 <material:PackIcon Kind="SetCenter" Width="45" Height="45" HorizontalAlignment="Center"/>
                 <TextBlock Text="Секции" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
-            <StackPanel Margin="25,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="25,0,25,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="clTeacher" MouseLeftButtonDown="clTeacher_MouseLeftButtonDown">
                 <material:PackIcon Kind="HumanMaleBoard" Width="45" Height="45" HorizontalAlignment="Center"/>
                 <TextBlock Text="Учителя" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
@@ -37,5 +37,10 @@
                 <TextBlock Text="Назначить" HorizontalAlignment="Center" FontSize="25"/>
             </StackPanel>
         </StackPanel>
+        <Frame 
+               BorderBrush="Transparent"
+               Grid.Row="2"
+               Name="fContainerControl"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

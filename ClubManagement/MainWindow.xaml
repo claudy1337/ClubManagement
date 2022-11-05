@@ -11,7 +11,7 @@
         FontFamily="Poppins"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Height="650" Width="950">
+        Height="680" Width="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -49,7 +49,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
                     <StackPanel Orientation="Vertical">
                         <material:PackIcon Kind="AccountSchool" Width="45" Height="45" HorizontalAlignment="Center"/>
                         <TextBlock Text="Студенты" HorizontalAlignment="Center" FontSize="25"/>

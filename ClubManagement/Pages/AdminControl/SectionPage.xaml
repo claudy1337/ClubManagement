@@ -42,7 +42,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding Image}" Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
+                        <Image Source="{Binding Section.Image}" Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
                         <StackPanel Grid.Column="1" Margin="10" Orientation="Vertical">
                             <Grid Height="330">
                                 <Grid.RowDefinitions>
@@ -53,7 +53,7 @@
                                 <StackPanel Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Активный?:" FontSize="20"/>
-                                        <TextBlock Text="{Binding isActive}" FontSize="20"/>
+                                        <TextBlock Text="{Binding Section.isActive}" FontSize="20"/>
                                     </StackPanel>
                                     <TextBlock Text="{Binding Schedule.DayOfWeeks.Title}" FontSize="20" Margin="0,5,0,5"/>
                                     <StackPanel Orientation="Horizontal">
@@ -65,14 +65,14 @@
                                 </StackPanel>
                                 <StackPanel Grid.Row="1">
                                     <TextBlock Text="Инфа о Кабинете:" FontSize="20" />
-                                    <TextBlock Text="{Binding Cabinet.Title}" FontSize="20" Margin="0,5,0,5"/>
-                                    <TextBlock Text="{Binding Cabinet.State}" FontSize="20" />
+                                    <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="20" Margin="0,5,0,5"/>
+                                    <TextBlock Text="{Binding Section.Cabinet.State}" FontSize="20" />
                                 </StackPanel>
                                 <StackPanel Grid.Row="2">
                                     <TextBlock Text="Инфа о Секции:" FontSize="20" Margin="0,0,0,5" />
-                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" FontSize="20" />
-                                    <TextBlock Text="{Binding MaxCountOfVisitors}" FontSize="20" Margin="0,5,0,5" />
-                                    <TextBlock Text="{Binding isActive}" FontSize="20" />
+                                    <TextBlock Text="{Binding Section.Title}" TextWrapping="Wrap" FontSize="20" />
+                                    <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="20" Margin="0,5,0,5" />
+                                    <TextBlock Text="{Binding Section.isActive}" FontSize="20" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>

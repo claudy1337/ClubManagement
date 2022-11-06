@@ -27,8 +27,9 @@ namespace ClubManagement.Pages.AdminControl
     {
         public static Teacher CurretTeacher;
         byte[] image;
-        bool isActive = false;
+        bool isActive;
         bool imgClick = false;
+        int count = 0;
         public ControlTeacherPage(Teacher currnetTeacher)
         {
             CurretTeacher = currnetTeacher;
@@ -94,6 +95,7 @@ namespace ClubManagement.Pages.AdminControl
                 var selectType = cbTypeTeacher.SelectedIndex;
                 if (CurretTeacher.idUser == null || CurretTeacher.idTypeTeacher == null)
                 {
+                    isChecked();
                     DBMethodsFromUser.AddAuth(txtLogin.Text, txtPassword.Text);
                     DBMethodsFromUser.AddUser(image, txtName.Text, txtSurname.Text, txtPatronymic.Text);
                     DBMethodsFromTeacher.AddTeacher(selectType, isActive);
@@ -101,6 +103,7 @@ namespace ClubManagement.Pages.AdminControl
                 }
                 else
                 {
+                    isChecked();
                     DBMethodsFromUser.EditImageUser(CurretTeacher.User);
                     DBMethodsFromUser.EditAccount(CurretTeacher.User, txtName.Text, txtSurname.Text, txtPatronymic.Text);
                     DBMethodsFromTeacher.EditTeacher(CurretTeacher, selectType, isActive);
@@ -116,8 +119,19 @@ namespace ClubManagement.Pages.AdminControl
 
         private void CBIsActice_Checked(object sender, RoutedEventArgs e)
         {
-            CBIsActice.IsChecked = true;
-            isActive = true;
+            isChecked();
+        }
+        private void isChecked()
+        {
+
+            if (CBIsActice.IsChecked == true)
+            {
+                isActive = true;
+            }
+            else if (CBIsActice.IsChecked == false)
+            {
+                isActive = false;
+            }
         }
     }
 }

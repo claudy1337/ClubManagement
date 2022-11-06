@@ -30,12 +30,12 @@ namespace ClubManagement.Pages.AdminControl
         }
         private void BindingData()
         {
-            lstvSection.ItemsSource = DBConnection.connect.Section.ToList();
+            lstvSection.ItemsSource = DBConnection.connect.SectionSchedule.ToList();
         }
         private void lstvSection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selelectSection = lstvSection.SelectedItem as Data.Model.Section;
-            NavigationService.Navigate(new ControlSectionPage(selelectSection));
+            var selelectSection = lstvSection.SelectedItem as SectionSchedule;
+            NavigationService.Navigate(new ControlSectionPage(selelectSection.Section));
         }
 
         private void btnAddNewSection_Click(object sender, RoutedEventArgs e)

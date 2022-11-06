@@ -26,14 +26,14 @@ namespace ClubManagement.Pages.AdminControl
     /// </summary>
     public partial class ControlSectionPage : Page
     {
-        public static Data.Model.Section Section;
+        public static Data.Model.Section CurrentSection;
         byte[] image;
         bool isCheck = false;
-        public ControlSectionPage(Data.Model.Section section)
+        public ControlSectionPage(Data.Model.Section currentSection)
         {
-            Section = section;
+            CurrentSection = currentSection;
             InitializeComponent();
-            if (Section.isActive == null || Section.MaxCountOfVisitors == null || Section.Title == null)
+            if (CurrentSection.Title == null || CurrentSection.MaxCountOfVisitors == null || CurrentSection.isActive == null)
             {
                 isNullBindingData();
             }
@@ -50,9 +50,9 @@ namespace ClubManagement.Pages.AdminControl
         {
             txtEditOrAdd.Text = "Редактировать Секцию";
             btnEditOrAdd.Content = "Редактировать";
-            cbCabinet.SelectedIndex = Section.CabinetID;
-            this.DataContext = Section;
-            if (Section.isActive == true)
+            cbCabinet.SelectedIndex = CurrentSection.CabinetID;
+            this.DataContext = CurrentSection;
+            if (CurrentSection.isActive == true)
             {
                 CBIsActice.IsChecked = true;
             }
@@ -107,33 +107,56 @@ namespace ClubManagement.Pages.AdminControl
 
         private void btnEditOrAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTitle.Text) || string.IsNullOrWhiteSpace(txtEditOrAdd.Text) || string.IsNullOrWhiteSpace(txtMaxCount.Text))
+            try
             {
-                MessageBox.Show("заполните все поля");
-            }
-            else
-            {
-                if (Section.isActive == null || Section.MaxCountOfVisitors == null || Section.Title == null)
+                if (string.IsNullOrWhiteSpace(txtTitle.Text) || string.IsNullOrWhiteSpace(txtEditOrAdd.Text) || string.IsNullOrWhiteSpace(txtMaxCount.Text))
                 {
-                    var selectCabinet = cbCabinet.SelectedItem as Cabinet;
-                    var selectHour = CBTimeHour.SelectedItem as TimeHour;
-                    var selectMin = CBTimeMin.SelectedItem as TimeMinutes;
-                    var selectDay = CBDayOfWeeks.SelectedItem as DayOfWeeks;
-                    var getsched = DBMethodsFromShedule.GetSchedule(selectHour.id, selectMin.id, selectDay.ID);
-                    if (getsched != null)
-                    {
-                        DBMethodsFromSection.AddSection(txtTitle.Text, selectCabinet.ID, Convert.ToInt32(txtMaxCount.Text), getsched.ID, isCheck, image);
-                    }
-                    else
-                    {
-                        MessageBox.Show("время не согласовано");
-                    }
-
+                    MessageBox.Show("заполните все поля");
                 }
                 else
                 {
-                    DBMethodsFromSection.AddImage(Section, image);
+                    if (CurrentSection.isActive == null || CurrentSection.MaxCountOfVisitors == null || CurrentSection.Title == null)
+                    {
+                        var selectCabinet = cbCabinet.SelectedItem as Cabinet;
+                        var selectHour = CBTimeHour.SelectedItem as TimeHour;
+                        var selectMin = CBTimeMin.SelectedItem as TimeMinutes;
+                        var selectDay = CBDayOfWeeks.SelectedItem as DayOfWeeks;
+                        var getsched = DBMethodsFromShedule.GetSchedule(selectHour.id, selectMin.id, selectDay.ID);
+                        if (getsched != null)
+                        {
+                            try
+                            {
+                                DBMethodsFromSection.AddSection(txtTitle.Text, selectCabinet.ID, Convert.ToInt32(txtMaxCount.Text), getsched.ID, isCheck, image);
+                                var getSection = DBMethodsFromSection.GetSection(selectCabinet.ID, txtTitle.Text);
+                                if (getSection != null)
+                                {
+                                    DBMethodsFromSection.AddSectionSchedule(getSection.ID, getsched.ID);
+                                    MessageBox.Show("добавлен");
+                                }
+                                
+                                NavigationService.Navigate(new ControlSectionPage(CurrentSection));
+                            }
+                            catch(NullReferenceException)
+                            {
+                                MessageBox.Show("обновление");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("время не согласовано");
+                        }
+
+                    }
+                    else
+                    {
+                        DBMethodsFromSection.AddImage(CurrentSection, image);
+                    }
                 }
+            }
+            catch(NullReferenceException)
+            {
+                return;
             }
         }
     }

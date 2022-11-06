@@ -46,7 +46,34 @@ namespace ClubManagement.Data.Classes
             else
                 return false;
         }
-        
+        public static ObservableCollection<SectionSchedule> GetSectionSchedules()
+        {
+            return new ObservableCollection<SectionSchedule>(DBConnection.connect.SectionSchedule);
+        }
+        public static SectionSchedule GetSectionSchedule(int idSection, int idSchedule)
+        {
+            return GetSectionSchedules().FirstOrDefault(s=>s.idSchedule == idSchedule && s.idSection == idSection);
+        }
+        public static void AddSectionSchedule(int section, int schedule)
+        {
+            var getsectionSchedule = GetSectionSchedule(section, schedule);
+            if (getsectionSchedule == null)
+            {
+                SectionSchedule sectionSchedule = new SectionSchedule
+                {
+                    idSchedule = schedule,
+                    idSection = section
+                };
+                DBConnection.connect.SectionSchedule.Add(sectionSchedule);
+                DBConnection.connect.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("данная секция уже записанна на это время");
+                return;
+            }
+           
+        }
         public static void AddSection(string title, int cabinet, int maxCount, int schedule, bool isActive, byte[] image)
         {
             var getSectionTitle = GetSection(cabinet, title);

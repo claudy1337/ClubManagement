@@ -45,7 +45,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock Text="Section" FontSize="20"/>
+                                <TextBlock Text="Секция" FontSize="20"/>
                                 <StackPanel Height="350">
                                     <Grid Height="350">
                                         <Grid.RowDefinitions>
@@ -56,9 +56,9 @@
                                             <TextBlock Text="{Binding Section.Title}" FontSize="15" />
                                             <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="15" />
                                             <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="15" />
-                                            <TextBlock Text="{Binding Section.Schedule.TimeMinutes.Min}" FontSize="15"/>
-                                            <TextBlock Text="{Binding Section.Schedule.TimeHour.Hour}" FontSize="15"/>
-                                            <TextBlock Text="{Binding Section.Schedule.DayOfWeeks.Title}" FontSize="15" />
+                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.TimeMinutes.Min}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.TimeHour.Hour}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.DayOfWeeks.Title}" FontSize="15" />
                                             <TextBlock Text="{Binding Section.isActive}" FontSize="15"/>
                                         </StackPanel>
                                         <Image Grid.Row="1" Source="{Binding Section.Image}" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
@@ -66,7 +66,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical">
-                                <TextBlock Text="Teacher" FontSize="20" />
+                                <TextBlock Text="Учитель" FontSize="20" />
                                 <Grid Height="350">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>

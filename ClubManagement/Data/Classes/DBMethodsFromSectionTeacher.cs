@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClubManagement.Data.Classes
 {
@@ -33,14 +34,23 @@ namespace ClubManagement.Data.Classes
         }
         public static void AddTeacherFromSection(int section, int teacher)
         {
-            Section_Teacher teacher_Section = new Section_Teacher
+            var getTeacherSection = GetTeacher_Section(section, teacher);
+            if (getTeacherSection == null)
             {
-                idSection = section,
-                idTeacher = teacher,
-                isActive = true
-            };
-            DBConnection.connect.Section_Teacher.Add(teacher_Section);
-            DBConnection.connect.SaveChanges();
+                Section_Teacher teacher_Section = new Section_Teacher
+                {
+                    idSection = section,
+                    idTeacher = teacher,
+                    isActive = true
+                };
+                DBConnection.connect.Section_Teacher.Add(teacher_Section);
+                DBConnection.connect.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("данный препод уже записан на данную секцию");
+                return;
+            }
         }
     }
 }

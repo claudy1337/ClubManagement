@@ -50,13 +50,15 @@ namespace ClubManagement.Pages.TeacherControl
         private void btnAppoint_Click(object sender, RoutedEventArgs e)
         {
             var selectSection = cbSection.SelectedItem as Data.Model.Section;
-            if (DBMethodsFromSection.MaxCount(selectSection) == true)
+            var selectStudent = cbStudent.SelectedItem as Student;
+            if (DBMethodsFromSection.IsCorrespondMaxCount(selectSection) == true)
             {
-                DBMethodsFromSection.add
+                DBMethodsFromSection.AddStudentInSection(selectStudent, selectSection);
+                NavigationService.Navigate(new AppointPage(User));
             }
             else
             {
-                MessageBox.Show("на данной секции макс кол участников");
+                MessageBox.Show("на данной секции макс кол участников или студент записан на это время");
             }
         }
     }

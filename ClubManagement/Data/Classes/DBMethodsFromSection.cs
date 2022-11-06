@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using ClubManagement.Data.Model;
 
 namespace ClubManagement.Data.Classes
@@ -41,11 +42,27 @@ namespace ClubManagement.Data.Classes
         {
             return GetStudentSections().Where(s => s.Section.CabinetID == cabinetID && s.Section.ScheduleID == scheduleID).ToList();
         }
-        public static bool MaxCount(Section section)
+        public static StudentSection GetStudentSection(Student student, Section section)
+        {
+            return GetStudentSections().FirstOrDefault(s=>s.SectionID == section.ID && s.Student.ID == student.ID);
+        }
+        public static bool IsCorrespondTimeSection(Section section, Student student)
+        {
+            var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID); //karate
+            var getStudent = DBMethodsFromStudent.GetStudent(student); //осип
+          //var getStudentSection = GetStudentSection(student );
+            //if (getStudentSection.Section.ScheduleID != section.ScheduleID)
+            //{
+            //    return true;
+            //}
+            //else
+                return false;
+        }
+        public static bool IsCorrespondMaxCount(Section section)
         {
             var getsectionStudentList = GetStudentSection(section.CabinetID, section.ScheduleID);
             var getMaxCount = GetSection(section.CabinetID, section.ScheduleID);
-            if (getMaxCount.MaxCountOfVisitors <= getsectionStudentList.Where(s=>s.isActive==true).Count())
+            if (getMaxCount.MaxCountOfVisitors > getsectionStudentList.Where(s => s.isActive == true).Count())
             {
                 return true;
             }
@@ -56,9 +73,18 @@ namespace ClubManagement.Data.Classes
         {
             var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID);
             var getStudent = DBMethodsFromStudent.GetStudent(student);
-            if (getStudent == null && getSection != null)
+            var getStudentSection = GetStudentSection(student, section);
+            if (getStudent != null && getSection != null && getStudentSection == null)
             {
-
+                StudentSection studentSection = new StudentSection
+                {
+                    isActive = true,
+                    SectionID = section.ID,
+                    StudentID = student.ID
+                };
+                DBConnection.connect.StudentSection.Add(studentSection);
+                DBConnection.connect.SaveChanges();
+                MessageBox.Show("добавлен");
             }
             else
             {

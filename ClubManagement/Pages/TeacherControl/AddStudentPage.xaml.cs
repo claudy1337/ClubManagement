@@ -51,6 +51,7 @@ namespace ClubManagement.Pages.TeacherControl
                 imgStudent.Source = bitmapImage;
                 image = File.ReadAllBytes(ofd.FileName);
             }
+
         }
 
         private void btnAddStudent_Click(object sender, RoutedEventArgs e)

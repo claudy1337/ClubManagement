@@ -19,25 +19,28 @@
             <TextBox
                      Margin="0,15,0,0"
                      x:Name="txtName"
+                     Text="{Binding Name}"
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="Имя" Width="220"/>
             <TextBox
                      Margin="0,15,0,15"
                      x:Name="txtSurname"
+                     Text="{Binding Surname}"
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="Фамилия" Width="220"/>
 
             <TextBox x:Name="txtPatronymic"
+                     Text="{Binding Patronymic}"
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="Отчество" Width="220"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      x:Name="CBClass" DisplayMemberPath="Number"
+                      x:Name="CBClass" DisplayMemberPath="Numbers"
                       material:HintAssist.Hint="Класс"
                       Margin="0,15,0,0"
                       Foreground="Black"
                       Height="50"/>
             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      x:Name="CBCharacter" DisplayMemberPath="Сharacter"
+                      x:Name="CBCharacter" DisplayMemberPath="Сharacters"
                       material:HintAssist.Hint="Буква"
                       Foreground="Black"
                       Margin="0,15,0,25"
@@ -53,16 +56,16 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <Grid Width="440">
+                                <Grid Width="440" Height="150">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="220"/>
+                                        <ColumnDefinition Width="220"/>
                                     </Grid.ColumnDefinitions>
                                     <Image Source="{Binding Image}" Margin="5" RenderOptions.BitmapScalingMode="HighQuality"/>
                                     <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-                                        <TextBlock Text="sdsdsd" FontSize="25"/>
-                                        <TextBlock Text="sdsds" FontSize="25" Margin="0,5,0,5"/>
-                                        <TextBlock Text="sdsd" FontSize="25" Margin="0,0,0,10"/>
+                                        <TextBlock Text="{Binding Surname}" FontSize="25"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="25" Margin="0,5,0,5"/>
+                                        <TextBlock Text="{Binding Patronymic}" FontSize="25" Margin="0,0,0,10"/>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Class.Number.Numbers}" FontSize="25" />
                                             <TextBlock Text="{Binding Class.Character.Сharacters}" FontSize="25"/>
@@ -73,7 +76,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="1" Content="Применить" x:Name="btnEditStudent" Click="btnEditStudent_Click" VerticalAlignment="Top"/>
+                <Button Width="200" Margin="0,5,0,0" Grid.Row="1" Content="Применить" x:Name="btnEditStudent" Click="btnEditStudent_Click" VerticalAlignment="Top"/>
             </Grid>
         </StackPanel>
     </Grid>

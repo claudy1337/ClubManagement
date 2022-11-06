@@ -54,5 +54,18 @@ namespace ClubManagement.Data.Classes
             }
             
         }
+        public static void EditStudent(Student student, string name, string surname, string patronymic, int classId)
+        {
+            var getStudent = GetStudent(student.Name, student.Surname, student.Patronymic, student.ClassID);
+            if (getStudent!= null)
+            {
+                getStudent.Name = name;
+                getStudent.Surname = surname;
+                getStudent.Patronymic = patronymic;
+                getStudent.ClassID = classId;
+                DBConnection.connect.SaveChanges();
+                MessageBox.Show("данные поменялись");
+            }
+        }
     }
 }

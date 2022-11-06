@@ -19,6 +19,7 @@ using ClubManagement.Pages;
 using ClubManagement.Windws;
 using ClubManagement.Pages.TeacherControl;
 using ClubManagement.Pages.AdminControl;
+using ClubManagement.Pages.SectionControl;
 
 namespace ClubManagement
 {
@@ -96,7 +97,7 @@ namespace ClubManagement
 
         private void clSections_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            fContainer.Navigate(new SectionsPage(CurrentUser));
         }
     }
 }

@@ -74,7 +74,9 @@
     </ApplicationDefinition>
     <Compile Include="Data\Classes\DBConnection.cs" />
     <Compile Include="Data\Classes\DBMethodsFromCabinet.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromHistory.cs" />
     <Compile Include="Data\Classes\DBMethodsFromSection.cs" />
+    <Compile Include="Data\Classes\DBMethodsFromSectionStudent.cs" />
     <Compile Include="Data\Classes\DBMethodsFromSectionTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromShedule.cs" />
     <Compile Include="Data\Classes\DBMethodsFromStudent.cs" />

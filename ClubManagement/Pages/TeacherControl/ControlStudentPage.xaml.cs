@@ -39,7 +39,7 @@ namespace ClubManagement.Pages.TeacherControl
         private void cbSectionTeacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectTeacher = cbSectionTeacher.SelectedItem as Section_Teacher;
-            DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s=>s.SectionID == selectTeacher.Section.ID).ToList();
+            DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s=>s.SectionID == selectTeacher.Section.ID && s.isActive == true).ToList();
         }
 
         private void DGSectionStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,6 +61,8 @@ namespace ClubManagement.Pages.TeacherControl
                     var selectStudent = DGSectionStudents.SelectedItem as StudentSection;
                     selectStudent.isActive = false;
                     DBConnection.connect.SaveChanges();
+                    MessageBox.Show("студент удален из секции");
+                    NavigationService.Navigate(new ControlStudentPage(CurrentUser));
                 }
                 
             }

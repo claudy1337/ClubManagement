@@ -34,33 +34,10 @@ namespace ClubManagement.Data.Classes
                 DBConnection.connect.SaveChanges();
             }
         }
-        public static ObservableCollection<StudentSection> GetStudentSections()
-        {
-            return new ObservableCollection<StudentSection>(DBConnection.connect.StudentSection);
-        }
-        public static IEnumerable<StudentSection> GetStudentSection(int cabinetID, int scheduleID)
-        {
-            return GetStudentSections().Where(s => s.Section.CabinetID == cabinetID && s.Section.ScheduleID == scheduleID).ToList();
-        }
-        public static StudentSection GetStudentSection(Student student, Section section)
-        {
-            return GetStudentSections().FirstOrDefault(s=>s.SectionID == section.ID && s.Student.ID == student.ID);
-        }
-        public static bool IsCorrespondTimeSection(Section section, Student student)
-        {
-            var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID); //karate
-            var getStudent = DBMethodsFromStudent.GetStudent(student); //осип
-          //var getStudentSection = GetStudentSection(student );
-            //if (getStudentSection.Section.ScheduleID != section.ScheduleID)
-            //{
-            //    return true;
-            //}
-            //else
-                return false;
-        }
+        
         public static bool IsCorrespondMaxCount(Section section)
         {
-            var getsectionStudentList = GetStudentSection(section.CabinetID, section.ScheduleID);
+            var getsectionStudentList = DBMethodsFromSectionStudent.GetStudentSection(section.CabinetID, section.ScheduleID);
             var getMaxCount = GetSection(section.CabinetID, section.ScheduleID);
             if (getMaxCount.MaxCountOfVisitors > getsectionStudentList.Where(s => s.isActive == true).Count())
             {
@@ -69,28 +46,7 @@ namespace ClubManagement.Data.Classes
             else
                 return false;
         }
-        public static void AddStudentInSection(Student student, Section section)
-        {
-            var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID);
-            var getStudent = DBMethodsFromStudent.GetStudent(student);
-            var getStudentSection = GetStudentSection(student, section);
-            if (getStudent != null && getSection != null && getStudentSection == null)
-            {
-                StudentSection studentSection = new StudentSection
-                {
-                    isActive = true,
-                    SectionID = section.ID,
-                    StudentID = student.ID
-                };
-                DBConnection.connect.StudentSection.Add(studentSection);
-                DBConnection.connect.SaveChanges();
-                MessageBox.Show("добавлен");
-            }
-            else
-            {
-                MessageBox.Show("уже записан на данную секцию");
-            }
-        }
+        
         public static void AddSection(string title, int cabinet, int maxCount, int schedule, bool isActive, byte[] image)
         {
             var getSectionTitle = GetSection(cabinet, schedule, title);

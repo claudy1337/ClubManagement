@@ -24,9 +24,9 @@ namespace ClubManagement.Data.Model
         public Nullable<int> NumberID { get; set; }
         public Nullable<int> СharacterID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student { get; set; }
         public virtual Character Character { get; set; }
         public virtual Number Number { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Student { get; set; }
     }
 }

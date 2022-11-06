@@ -15,12 +15,12 @@ namespace ClubManagement.Data.Model
     public partial class History
     {
         public int ID { get; set; }
-        public Nullable<int> TeacherID { get; set; }
-        public Nullable<int> CabinetID { get; set; }
         public Nullable<int> StudentID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> SectionID { get; set; }
+        public Nullable<int> TeacherID { get; set; }
     
-        public virtual Cabinet Cabinet { get; set; }
+        public virtual Section Section { get; set; }
         public virtual Student Student { get; set; }
         public virtual Teacher Teacher { get; set; }
     }

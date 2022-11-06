@@ -17,6 +17,7 @@ namespace ClubManagement.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
         {
+            this.History = new HashSet<History>();
             this.Section_Teacher = new HashSet<Section_Teacher>();
             this.StudentSection = new HashSet<StudentSection>();
         }
@@ -30,6 +31,8 @@ namespace ClubManagement.Data.Model
         public Nullable<bool> isActive { get; set; }
     
         public virtual Cabinet Cabinet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> History { get; set; }
         public virtual Schedule Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section_Teacher> Section_Teacher { get; set; }

@@ -33,8 +33,8 @@
                         <DataGridTextColumn Header="Имя" Binding="{Binding Student.Name}"/>
                         <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.Surname}"/>
                         <DataGridTextColumn Header="Отчество" Binding="{Binding Student.Patronymic}"/>
-                        <DataGridTextColumn Header="Класс" Binding="{Binding Student.Class.Number.Number}"/>
-                        <DataGridTextColumn Header="Буква" Binding="{Binding Student.Class.Сharacter.Сharacter}"/>
+                        <DataGridTextColumn Header="Класс" Binding="{Binding Student.Class.Number.Numbers}"/>
+                        <DataGridTextColumn Header="Буква" Binding="{Binding Student.Class.Character.Сharacters}"/>
                         <DataGridTextColumn Header="Активность" Binding="{Binding isActive}"/>
                     </DataGrid.Columns>
                 </DataGrid>

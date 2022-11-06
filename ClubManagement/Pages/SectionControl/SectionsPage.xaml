@@ -12,6 +12,24 @@
       Title="SectionsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="clTimeTable" MouseLeftButtonDown="clTimeTable_MouseLeftButtonDown">
+                <material:PackIcon Kind="Timetable" Width="45" Height="45" HorizontalAlignment="Center"/>
+                <TextBlock Text="Расписание" HorizontalAlignment="Center" FontSize="25"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,25,0" x:Name="clControlSection" MouseLeftButtonDown="clControlSection_MouseLeftButtonDown">
+                <material:PackIcon Kind="ApplicationEdit" Width="45" Height="45" HorizontalAlignment="Center"/>
+                <TextBlock Text="Отметки" HorizontalAlignment="Center" FontSize="25"/>
+            </StackPanel>
+        </StackPanel>
+        <Frame 
+               BorderBrush="Transparent"
+               Grid.Row="2"
+               Name="fContainerSectionControl"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

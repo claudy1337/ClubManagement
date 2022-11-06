@@ -36,6 +36,7 @@ namespace ClubManagement.Data.Model
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<Section> Section { get; set; }
         public virtual DbSet<Section_Teacher> Section_Teacher { get; set; }
+        public virtual DbSet<SectionSchedule> SectionSchedule { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentSection> StudentSection { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

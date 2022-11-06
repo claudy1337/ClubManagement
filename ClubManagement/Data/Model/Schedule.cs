@@ -17,7 +17,7 @@ namespace ClubManagement.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Schedule()
         {
-            this.Section = new HashSet<Section>();
+            this.SectionSchedule = new HashSet<SectionSchedule>();
         }
     
         public int ID { get; set; }
@@ -29,6 +29,6 @@ namespace ClubManagement.Data.Model
         public virtual TimeHour TimeHour { get; set; }
         public virtual TimeMinutes TimeMinutes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Section { get; set; }
+        public virtual ICollection<SectionSchedule> SectionSchedule { get; set; }
     }
 }

@@ -84,7 +84,6 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CabinetID" Type="int" Nullable="false" />
           <Property Name="MaxCountOfVisitors" Type="int" />
-          <Property Name="ScheduleID" Type="int" Nullable="false" />
           <Property Name="Image" Type="image" />
           <Property Name="isActive" Type="bit" />
         </EntityType>
@@ -96,6 +95,14 @@
           <Property Name="idSection" Type="int" Nullable="false" />
           <Property Name="isActive" Type="bit" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SectionSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSection" Type="int" />
+          <Property Name="idSchedule" Type="int" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -277,18 +284,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Section_Schedule">
-          <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
-          <End Role="Section" Type="Self.Section" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Schedule">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Section">
-              <PropertyRef Name="ScheduleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Section_Teacher_Section">
           <End Role="Section" Type="Self.Section" Multiplicity="1" />
           <End Role="Section_Teacher" Type="Self.Section_Teacher" Multiplicity="*" />
@@ -310,6 +305,30 @@
             </Principal>
             <Dependent Role="Section_Teacher">
               <PropertyRef Name="idTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionSchedule_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SectionSchedule">
+              <PropertyRef Name="idSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionSchedule_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SectionSchedule">
+              <PropertyRef Name="idSection" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,6 +428,7 @@
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section_Teacher" EntityType="Self.Section_Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionSchedule" EntityType="Self.SectionSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentSection" EntityType="Self.StudentSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -453,10 +473,6 @@
             <End Role="Cabinet" EntitySet="Cabinet" />
             <End Role="Section" EntitySet="Section" />
           </AssociationSet>
-          <AssociationSet Name="FK_Section_Schedule" Association="Self.FK_Section_Schedule">
-            <End Role="Schedule" EntitySet="Schedule" />
-            <End Role="Section" EntitySet="Section" />
-          </AssociationSet>
           <AssociationSet Name="FK_Section_Teacher_Section" Association="Self.FK_Section_Teacher_Section">
             <End Role="Section" EntitySet="Section" />
             <End Role="Section_Teacher" EntitySet="Section_Teacher" />
@@ -464,6 +480,14 @@
           <AssociationSet Name="FK_Section_Teacher_Teacher" Association="Self.FK_Section_Teacher_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Section_Teacher" EntitySet="Section_Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionSchedule_Schedule" Association="Self.FK_SectionSchedule_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionSchedule_Section" Association="Self.FK_SectionSchedule_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
             <End Role="Class" EntitySet="Class" />
@@ -584,7 +608,7 @@
           <NavigationProperty Name="DayOfWeeks" Relationship="Self.FK_Schedule_DayOfWeek" FromRole="Schedule" ToRole="DayOfWeeks" />
           <NavigationProperty Name="TimeHour" Relationship="Self.FK_Schedule_TimeHour" FromRole="Schedule" ToRole="TimeHour" />
           <NavigationProperty Name="TimeMinutes" Relationship="Self.FK_Schedule_TimeMinutes" FromRole="Schedule" ToRole="TimeMinutes" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_Section_Schedule" FromRole="Schedule" ToRole="Section" />
+          <NavigationProperty Name="SectionSchedule" Relationship="Self.FK_SectionSchedule_Schedule" FromRole="Schedule" ToRole="SectionSchedule" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -594,13 +618,12 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CabinetID" Type="Int32" Nullable="false" />
           <Property Name="MaxCountOfVisitors" Type="Int32" />
-          <Property Name="ScheduleID" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="isActive" Type="Boolean" />
           <NavigationProperty Name="Cabinet" Relationship="Self.FK_Section_Cabinet" FromRole="Section" ToRole="Cabinet" />
           <NavigationProperty Name="History" Relationship="Self.FK_History_Section" FromRole="Section" ToRole="History" />
-          <NavigationProperty Name="Schedule" Relationship="Self.FK_Section_Schedule" FromRole="Section" ToRole="Schedule" />
           <NavigationProperty Name="Section_Teacher" Relationship="Self.FK_Section_Teacher_Section" FromRole="Section" ToRole="Section_Teacher" />
+          <NavigationProperty Name="SectionSchedule" Relationship="Self.FK_SectionSchedule_Section" FromRole="Section" ToRole="SectionSchedule" />
           <NavigationProperty Name="StudentSection" Relationship="Self.FK_StudentSection_Section" FromRole="Section" ToRole="StudentSection" />
         </EntityType>
         <EntityType Name="Section_Teacher">
@@ -613,6 +636,16 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Section" Relationship="Self.FK_Section_Teacher_Section" FromRole="Section_Teacher" ToRole="Section" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Section_Teacher_Teacher" FromRole="Section_Teacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="SectionSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSection" Type="Int32" />
+          <Property Name="idSchedule" Type="Int32" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_SectionSchedule_Schedule" FromRole="SectionSchedule" ToRole="Schedule" />
+          <NavigationProperty Name="Section" Relationship="Self.FK_SectionSchedule_Section" FromRole="SectionSchedule" ToRole="Section" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -845,15 +878,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Section_Schedule">
-          <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
-          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+        <Association Name="FK_SectionSchedule_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Schedule">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Section">
-              <PropertyRef Name="ScheduleID" />
+            <Dependent Role="SectionSchedule">
+              <PropertyRef Name="idSchedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -865,6 +898,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Section_Teacher">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionSchedule_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SectionSchedule">
               <PropertyRef Name="idSection" />
             </Dependent>
           </ReferentialConstraint>
@@ -941,6 +986,7 @@
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
           <EntitySet Name="Section" EntityType="Self.Section" />
           <EntitySet Name="Section_Teacher" EntityType="Self.Section_Teacher" />
+          <EntitySet Name="SectionSchedule" EntityType="Self.SectionSchedule" />
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="StudentSection" EntityType="Self.StudentSection" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -997,13 +1043,17 @@
             <End Role="TimeMinutes" EntitySet="TimeMinutes" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
-          <AssociationSet Name="FK_Section_Schedule" Association="Self.FK_Section_Schedule">
+          <AssociationSet Name="FK_SectionSchedule_Schedule" Association="Self.FK_SectionSchedule_Schedule">
             <End Role="Schedule" EntitySet="Schedule" />
-            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Section_Teacher_Section" Association="Self.FK_Section_Teacher_Section">
             <End Role="Section" EntitySet="Section" />
             <End Role="Section_Teacher" EntitySet="Section_Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionSchedule_Section" Association="Self.FK_SectionSchedule_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentSection_Section" Association="Self.FK_StudentSection_Section">
             <End Role="Section" EntitySet="Section" />
@@ -1119,7 +1169,6 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CabinetID" ColumnName="CabinetID" />
                 <ScalarProperty Name="MaxCountOfVisitors" ColumnName="MaxCountOfVisitors" />
-                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
               </MappingFragment>
@@ -1132,6 +1181,15 @@
                 <ScalarProperty Name="idSection" ColumnName="idSection" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionSchedule">
+            <EntityTypeMapping TypeName="schoolModel.SectionSchedule">
+              <MappingFragment StoreEntitySet="SectionSchedule">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSection" ColumnName="idSection" />
+                <ScalarProperty Name="idSchedule" ColumnName="idSchedule" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

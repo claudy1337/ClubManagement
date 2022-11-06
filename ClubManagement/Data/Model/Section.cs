@@ -19,6 +19,7 @@ namespace ClubManagement.Data.Model
         {
             this.History = new HashSet<History>();
             this.Section_Teacher = new HashSet<Section_Teacher>();
+            this.SectionSchedule = new HashSet<SectionSchedule>();
             this.StudentSection = new HashSet<StudentSection>();
         }
     
@@ -26,16 +27,16 @@ namespace ClubManagement.Data.Model
         public string Title { get; set; }
         public int CabinetID { get; set; }
         public Nullable<int> MaxCountOfVisitors { get; set; }
-        public int ScheduleID { get; set; }
         public byte[] Image { get; set; }
         public Nullable<bool> isActive { get; set; }
     
         public virtual Cabinet Cabinet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<History> History { get; set; }
-        public virtual Schedule Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section_Teacher> Section_Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SectionSchedule> SectionSchedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentSection> StudentSection { get; set; }
     }

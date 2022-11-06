@@ -18,25 +18,15 @@ using ClubManagement.Data.Classes;
 namespace ClubManagement.Pages.SectionControl
 {
     /// <summary>
-    /// Логика взаимодействия для SectionsPage.xaml
+    /// Логика взаимодействия для SectionControl.xaml
     /// </summary>
-    public partial class SectionsPage : Page
+    public partial class SectionControl : Page
     {
         public static User CurrentUser;
-        public SectionsPage(User currentUser)
+        public SectionControl(User currentUser)
         {
             CurrentUser = currentUser;
             InitializeComponent();
-        }
-
-        private void clTimeTable_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            fContainerSectionControl.Navigate(new TimeTablePage(CurrentUser));
-        }
-
-        private void clControlSection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            fContainerSectionControl.Navigate(new SectionControl(CurrentUser));
         }
     }
 }

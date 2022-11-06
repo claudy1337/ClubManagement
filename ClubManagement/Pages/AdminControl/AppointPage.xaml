@@ -33,7 +33,7 @@
                       x:Name="cbSection"
                       SelectionChanged="cbTeacher_SelectionChanged"
                       DisplayMemberPath="Title" Height="50"
-                      material:HintAssist.Hint="День Недели"/>
+                      material:HintAssist.Hint="Секция"/>
                 <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Добавить" Margin="0,20,0,0"/>
             </StackPanel>
             <ListView Grid.Column="1" x:Name="lstvAppoint">

@@ -13,7 +13,7 @@ namespace ClubManagement.Data.Classes
     {
         public static void AddStudentInSection(Student student, Section section)
         {
-            var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID);
+            var getSection = DBMethodsFromSection.GetSection(section.CabinetID);
             var getStudent = DBMethodsFromStudent.GetStudent(student);
             var getStudentSection = GetStudentSection(student, section);
             if (getStudent != null && getSection != null && getStudentSection == null)
@@ -43,9 +43,9 @@ namespace ClubManagement.Data.Classes
         {
             return new ObservableCollection<StudentSection>(DBConnection.connect.StudentSection);
         }
-        public static IEnumerable<StudentSection> GetStudentSection(int cabinetID, int scheduleID)
+        public static IEnumerable<StudentSection> GetStudentSection(int cabinetID)
         {
-            return GetStudentSections().Where(s => s.Section.CabinetID == cabinetID && s.Section.ScheduleID == scheduleID).ToList();
+            return GetStudentSections().Where(s => s.Section.CabinetID == cabinetID).ToList();
         }
         public static StudentSection GetStudentSection(Student student, Section section)
         {

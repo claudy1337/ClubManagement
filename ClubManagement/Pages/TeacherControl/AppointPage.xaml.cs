@@ -28,6 +28,36 @@ namespace ClubManagement.Pages.TeacherControl
         {
             User = user;
             InitializeComponent();
+            BindingData();
+        }
+        private void BindingData()
+        {
+            cbSection.ItemsSource = DBConnection.connect.Section.Where(s=>s.isActive == true).ToList();
+            cbStudent.ItemsSource = DBConnection.connect.Student.ToList();
+        }
+
+        private void cbStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectStudent = cbStudent.SelectedItem as Student;
+            txtStudent.Text = $"{selectStudent.Name} {selectStudent.Class.Number.Numbers} {selectStudent.Class.Character.Сharacters}"; 
+        }
+
+        private void cbSection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnAppoint_Click(object sender, RoutedEventArgs e)
+        {
+            var selectSection = cbSection.SelectedItem as Data.Model.Section;
+            if (DBMethodsFromSection.MaxCount(selectSection) == true)
+            {
+                DBMethodsFromSection.add
+            }
+            else
+            {
+                MessageBox.Show("на данной секции макс кол участников");
+            }
         }
     }
 }

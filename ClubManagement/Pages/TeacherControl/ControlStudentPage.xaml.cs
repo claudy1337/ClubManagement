@@ -51,9 +51,18 @@ namespace ClubManagement.Pages.TeacherControl
         {
            try
            {
-                var selectStudent = DGSectionStudents.SelectedItem as StudentSection;
-                selectStudent.isActive = false;
-                DBConnection.connect.SaveChanges();
+                if (DGSectionStudents.SelectedIndex == -1)
+                {
+                    MessageBox.Show("студент не выбран");
+                    return;
+                }
+                else
+                {
+                    var selectStudent = DGSectionStudents.SelectedItem as StudentSection;
+                    selectStudent.isActive = false;
+                    DBConnection.connect.SaveChanges();
+                }
+                
             }
            catch(NullReferenceException)
            {

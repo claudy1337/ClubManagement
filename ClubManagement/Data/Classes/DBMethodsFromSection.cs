@@ -33,6 +33,38 @@ namespace ClubManagement.Data.Classes
                 DBConnection.connect.SaveChanges();
             }
         }
+        public static ObservableCollection<StudentSection> GetStudentSections()
+        {
+            return new ObservableCollection<StudentSection>(DBConnection.connect.StudentSection);
+        }
+        public static IEnumerable<StudentSection> GetStudentSection(int cabinetID, int scheduleID)
+        {
+            return GetStudentSections().Where(s => s.Section.CabinetID == cabinetID && s.Section.ScheduleID == scheduleID).ToList();
+        }
+        public static bool MaxCount(Section section)
+        {
+            var getsectionStudentList = GetStudentSection(section.CabinetID, section.ScheduleID);
+            var getMaxCount = GetSection(section.CabinetID, section.ScheduleID);
+            if (getMaxCount.MaxCountOfVisitors <= getsectionStudentList.Where(s=>s.isActive==true).Count())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public static void AddStudentInSection(Student student, Section section)
+        {
+            var getSection = DBMethodsFromSection.GetSection(section.CabinetID, section.ScheduleID);
+            var getStudent = DBMethodsFromStudent.GetStudent(student);
+            if (getStudent == null && getSection != null)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("уже записан на данную секцию");
+            }
+        }
         public static void AddSection(string title, int cabinet, int maxCount, int schedule, bool isActive, byte[] image)
         {
             var getSectionTitle = GetSection(cabinet, schedule, title);

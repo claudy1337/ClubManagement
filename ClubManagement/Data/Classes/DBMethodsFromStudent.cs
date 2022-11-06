@@ -22,6 +22,10 @@ namespace ClubManagement.Data.Classes
         {
             return GetStudents().FirstOrDefault(s=>s.Name == name && s.Patronymic == patronymic && s.Surname == surname && s.ClassID == classId);
         }
+        public static Student GetStudent(Student student)
+        {
+            return GetStudents().FirstOrDefault(s => s.Name == student.Name && s.Patronymic == student.Patronymic && s.Surname == student.Surname && s.ClassID == student.ClassID);
+        }
         public static ObservableCollection<Class> GetClasses()
         {
             return new ObservableCollection<Class>(DBConnection.connect.Class);
@@ -54,6 +58,7 @@ namespace ClubManagement.Data.Classes
             }
             
         }
+        
         public static void EditStudent(Student student, string name, string surname, string patronymic, int classId)
         {
             var getStudent = GetStudent(student.Name, student.Surname, student.Patronymic, student.ClassID);

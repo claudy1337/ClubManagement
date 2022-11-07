@@ -60,6 +60,7 @@ namespace ClubManagement.Pages.TeacherControl
                 var getClass = DBMethodsFromStudent.GetClasses(selectClass.id, selectCharacter.id);
                 var selectStudent = lstvStudent.SelectedItem as Student;
                 DBMethodsFromStudent.EditStudent(selectStudent, txtName.Text, txtSurname.Text, txtPatronymic.Text, getClass.ID);
+                NavigationService.Navigate(new EditStudentPage(CurrentUser));
             }
         }
     }

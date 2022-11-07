@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ComboBox  Style="{StaticResource MaterialDesignFilledComboBox}"
-                   x:Name="cbSection" DisplayMemberPath="Title"
+                   x:Name="cbSection" DisplayMemberPath="Section.Title"
                    SelectionChanged="cbSection_SelectionChanged"
                    Width="180"
                    Height="50"

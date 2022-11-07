@@ -34,7 +34,6 @@ namespace ClubManagement.Data.Classes
                 DBConnection.connect.SaveChanges();
             }
         }
-        
         public static bool IsCorrespondMaxCount(Section section)
         {
             var getsectionStudentList = DBMethodsFromSectionStudent.GetStudentSection(section.CabinetID);

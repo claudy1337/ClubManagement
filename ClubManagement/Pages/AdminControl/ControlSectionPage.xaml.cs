@@ -48,10 +48,12 @@ namespace ClubManagement.Pages.AdminControl
         }
         private void BindingData()
         {
+            
             txtEditOrAdd.Text = "Редактировать Секцию";
             btnEditOrAdd.Content = "Редактировать";
             cbCabinet.SelectedIndex = CurrentSection.CabinetID;
             this.DataContext = CurrentSection;
+           // CBTimeMin.SelectedIndex = 
             if (CurrentSection.isActive == true)
             {
                 CBIsActice.IsChecked = true;

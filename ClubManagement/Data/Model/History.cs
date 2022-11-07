@@ -20,7 +20,7 @@ namespace ClubManagement.Data.Model
         public Nullable<int> SectionID { get; set; }
         public Nullable<int> TeacherID { get; set; }
     
-        public virtual Section Section { get; set; }
+        public virtual SectionSchedule SectionSchedule { get; set; }
         public virtual Student Student { get; set; }
         public virtual Teacher Teacher { get; set; }
     }

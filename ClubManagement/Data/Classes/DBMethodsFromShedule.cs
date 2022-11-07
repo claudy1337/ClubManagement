@@ -43,5 +43,6 @@ namespace ClubManagement.Data.Classes
                 MessageBox.Show("время уже установлено");
             }
         }
+        
     }
 }

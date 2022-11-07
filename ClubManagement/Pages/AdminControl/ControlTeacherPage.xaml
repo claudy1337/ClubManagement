@@ -52,7 +52,7 @@
                             <TextBox x:Name="txtPassword"
                                      Text="{Binding User.Authorization.Password}"
                                      Style="{StaticResource MaterialDesignFilledTextBox}"
-                                     material:HintAssist.Hint="Логин" Width="170"
+                                     material:HintAssist.Hint="Пароль" Width="170"
                                      Margin="0,15,0,15"/>
                             <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
                                       x:Name="cbTypeTeacher"

@@ -32,7 +32,7 @@ namespace ClubManagement.Pages.TeacherControl
         }
         private void BindingData()
         {
-            cbSection.ItemsSource = DBConnection.connect.Section.Where(s=>s.isActive == true).ToList();
+            cbSection.ItemsSource = DBMethodsFromSectionTeacher.GetSection_Teachers(User.ID);
             cbStudent.ItemsSource = DBConnection.connect.Student.ToList();
             
         }
@@ -47,28 +47,28 @@ namespace ClubManagement.Pages.TeacherControl
             }
             else
             {
-                var selectSection = cbSection.SelectedItem as Data.Model.Section;
-                DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s => s.SectionID == selectSection.ID && s.Student.ID == selectStudent.ID).ToList();
+                var selectSection = cbSection.SelectedItem as Section_Teacher;
+                DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s => s.SectionID == selectSection.Section.ID && s.Student.ID == selectStudent.ID).ToList();
             }
         }
 
         private void cbSection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectSection = cbSection.SelectedItem as Data.Model.Section;
-            var getmaxCountInSection = DBMethodsFromSection.GetSection(selectSection.Cabinet.ID);
-            DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s => s.SectionID == selectSection.ID).ToList();
-            txtMaxCount.Text = "Записанно: " + DBConnection.connect.StudentSection.Where(s=>s.Section.ID == selectSection.ID && s.isActive==true).ToList().Count().ToString();
+            var selectSection = cbSection.SelectedItem as Section_Teacher;
+            var getmaxCountInSection = DBMethodsFromSection.GetSection(selectSection.Section.Cabinet.ID);
+            DGSectionStudents.ItemsSource = DBConnection.connect.StudentSection.Where(s => s.SectionID == selectSection.Section.ID).ToList();
+            txtMaxCount.Text = "Записанно: " + DBConnection.connect.StudentSection.Where(s=>s.Section.ID == selectSection.Section.ID && s.isActive==true).ToList().Count().ToString();
             txtMaxCountSection.Text = "Всего мест: " + getmaxCountInSection.MaxCountOfVisitors;
 
         }
 
         private void btnAppoint_Click(object sender, RoutedEventArgs e)
         {
-            var selectSection = cbSection.SelectedItem as Data.Model.Section;
+            var selectSection = cbSection.SelectedItem as Section_Teacher;
             var selectStudent = cbStudent.SelectedItem as Student;
-            if (DBMethodsFromSection.IsCorrespondMaxCount(selectSection) == true)
+            if (DBMethodsFromSection.IsCorrespondMaxCount(selectSection.Section) == true)
             {
-                DBMethodsFromSectionStudent.AddStudentInSection(selectStudent, selectSection);
+                DBMethodsFromSectionStudent.AddStudentInSection(selectStudent, selectSection.Section);
                 NavigationService.Navigate(new AppointPage(User));
             }
             else

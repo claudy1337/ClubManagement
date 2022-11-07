@@ -14,10 +14,18 @@ namespace ClubManagement.Data.Model
     
     public partial class SectionSchedule
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SectionSchedule()
+        {
+            this.History = new HashSet<History>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> idSection { get; set; }
         public Nullable<int> idSchedule { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> History { get; set; }
         public virtual Schedule Schedule { get; set; }
         public virtual Section Section { get; set; }
     }

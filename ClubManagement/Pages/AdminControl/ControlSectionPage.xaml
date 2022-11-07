@@ -92,6 +92,6 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Image x:Name="imgSection" Source="/Resources/default_section.png/" Grid.Column="1" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <Image x:Name="imgSection" Source="{Binding Image}" Grid.Column="1" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Grid>
 </Page>

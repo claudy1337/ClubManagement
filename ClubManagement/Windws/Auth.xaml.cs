@@ -52,11 +52,21 @@ namespace ClubManagement.Windws
             {
                 if (DBMethodsFromUser.IsCorrectUser(txtLogin.Text, txtPassword.Password))
                 {
-                    CurrentUser = DBMethodsFromUser.CurrentUser;
-                    MainWindow main = new MainWindow(CurrentUser);
-                    MessageBox.Show($"Welcome: {CurrentUser.Name}");
-                    main.Show();
-                    this.Close();
+                    var getTeacher = DBMethodsFromTeacher.GetTeacher(txtLogin.Text, txtPassword.Password);
+                    if (getTeacher == null || getTeacher.isActive == true)
+                    {
+                        CurrentUser = DBMethodsFromUser.CurrentUser;
+                        MainWindow main = new MainWindow(CurrentUser);
+                        MessageBox.Show($"Welcome: {CurrentUser.Name}");
+                        main.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("вы исключены");
+                        return;
+                    }
+                    
                 }
                 else
                 {

@@ -15,14 +15,15 @@ namespace ClubManagement.Data.Classes
         {
             return new ObservableCollection<History>(DBConnection.connect.History);
         }
-        public static void AddHistory(int sectionScheduleID, int teacherID, int studentID, DateTime date)
+        public static void AddHistory(Section sectionID, int teacherID, int studentID, DateTime date)
         {
+            
             History history = new History
             {
                 TeacherID = teacherID,
                 StudentID = studentID,
                 Date = date,
-                SectionID = sectionScheduleID
+                SectionID = sectionID.ID
 
             };
             DBConnection.connect.History.Add(history);

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище schoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище schoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="ID" />
@@ -200,12 +200,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_History_SectionSchedule">
-          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="0..1" />
+        <Association Name="FK_History_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SectionSchedule">
-              <PropertyRef Name="id" />
+            <Principal Role="Section">
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="History">
               <PropertyRef Name="SectionID" />
@@ -445,8 +445,8 @@
             <End Role="Character" EntitySet="Character" />
             <End Role="Class" EntitySet="Class" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_SectionSchedule" Association="Self.FK_History_SectionSchedule">
-            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
+          <AssociationSet Name="FK_History_Section" Association="Self.FK_History_Section">
+            <End Role="Section" EntitySet="Section" />
             <End Role="History" EntitySet="History" />
           </AssociationSet>
           <AssociationSet Name="FK_History_Student" Association="Self.FK_History_Student">
@@ -518,8 +518,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="schoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -577,9 +576,9 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="SectionID" Type="Int32" />
           <Property Name="TeacherID" Type="Int32" />
-          <NavigationProperty Name="SectionSchedule" Relationship="Self.FK_History_SectionSchedule" FromRole="History" ToRole="SectionSchedule" />
           <NavigationProperty Name="Student" Relationship="Self.FK_History_Student" FromRole="History" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_History_Teacher" FromRole="History" ToRole="Teacher" />
+          <NavigationProperty Name="Section" Relationship="schoolModel.FK_History_Section" FromRole="History" ToRole="Section" />
         </EntityType>
         <EntityType Name="Number">
           <Key>
@@ -624,6 +623,7 @@
           <NavigationProperty Name="Section_Teacher" Relationship="Self.FK_Section_Teacher_Section" FromRole="Section" ToRole="Section_Teacher" />
           <NavigationProperty Name="SectionSchedule" Relationship="Self.FK_SectionSchedule_Section" FromRole="Section" ToRole="SectionSchedule" />
           <NavigationProperty Name="StudentSection" Relationship="Self.FK_StudentSection_Section" FromRole="Section" ToRole="StudentSection" />
+          <NavigationProperty Name="History" Relationship="schoolModel.FK_History_Section" FromRole="Section" ToRole="History" />
         </EntityType>
         <EntityType Name="Section_Teacher">
           <Key>
@@ -643,7 +643,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idSection" Type="Int32" />
           <Property Name="idSchedule" Type="Int32" />
-          <NavigationProperty Name="History" Relationship="Self.FK_History_SectionSchedule" FromRole="SectionSchedule" ToRole="History" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_SectionSchedule_Schedule" FromRole="SectionSchedule" ToRole="Schedule" />
           <NavigationProperty Name="Section" Relationship="Self.FK_SectionSchedule_Section" FromRole="SectionSchedule" ToRole="Section" />
         </EntityType>
@@ -803,18 +802,6 @@
             </Principal>
             <Dependent Role="Schedule">
               <PropertyRef Name="DayOfWeekID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_SectionSchedule">
-          <End Role="SectionSchedule" Type="Self.SectionSchedule" Multiplicity="0..1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SectionSchedule">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="SectionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1019,10 +1006,6 @@
             <End Role="DayOfWeeks" EntitySet="DayOfWeeks" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_SectionSchedule" Association="Self.FK_History_SectionSchedule">
-            <End Role="SectionSchedule" EntitySet="SectionSchedule" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
           <AssociationSet Name="FK_History_Student" Association="Self.FK_History_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="History" EntitySet="History" />
@@ -1075,7 +1058,23 @@
             <End Role="User" EntitySet="User" />
             <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
+          <AssociationSet Name="FK_History_Section" Association="schoolModel.FK_History_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_History_Section">
+          <End Type="schoolModel.Section" Role="Section" Multiplicity="0..1" />
+          <End Type="schoolModel.History" Role="History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

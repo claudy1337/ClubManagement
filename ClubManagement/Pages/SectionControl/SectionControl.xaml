@@ -9,9 +9,45 @@
       Background="White"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
       FontFamily="Poppins"
-      Title="SectionControl">
+      Title="SectionControl"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox  Style="{StaticResource MaterialDesignFilledComboBox}"
+                   x:Name="cbSection" DisplayMemberPath="Section.Title"
+                   SelectionChanged="cbSection_SelectionChanged"
+                   Width="180"
+                   Height="50"
+                   Grid.Row="0"
+                   material:HintAssist.Hint="Предмет"/>
+            <ComboBox Margin="20,0,0,0" Style="{StaticResource MaterialDesignFilledComboBox}"
+                   x:Name="CBTime" DisplayMemberPath="Schedule.DayOfWeeks.Title"
+                   SelectionChanged="Time_SelectionChanged"
+                   Width="180"
+                   Height="50"
+                   Grid.Row="0"
+                   material:HintAssist.Hint="Время"/>
+        </StackPanel>
+        <Button Grid.Row="2" Height="40" x:Name="btnMark" Click="btnMark_Click" Content="Отметить" Width="200"/>
+
+        <ListView x:Name="DGSectionStudents" Grid.Row="1" SelectionChanged="DGSectionStudents_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Имя: "/>
+                            <TextBlock Text="{Binding Student.Name}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fcc53c3befa84452bfbbaf1b952df450" Name="Diagram1">
+      <Diagram DiagramId="fcc53c3befa84452bfbbaf1b952df450" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="schoolModel.Authorization" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.Cabinet" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="schoolModel.Character" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
@@ -31,7 +31,6 @@
         <AssociationConnector Association="schoolModel.FK_Class_Number" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Student_Class" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Schedule_DayOfWeek" ManuallyRouted="false" />
-        <AssociationConnector Association="schoolModel.FK_History_SectionSchedule" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_History_Student" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_History_Teacher" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_User_Role" ManuallyRouted="false" />
@@ -45,6 +44,7 @@
         <AssociationConnector Association="schoolModel.FK_StudentSection_Student" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Teacher_TypeTeacher" ManuallyRouted="false" />
         <AssociationConnector Association="schoolModel.FK_Teacher_User" ManuallyRouted="false" />
+        <AssociationConnector Association="schoolModel.FK_History_Section" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

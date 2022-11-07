@@ -45,7 +45,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock Text="Секция" FontSize="25"/>
+                                <TextBlock Text="Секция" FontSize="20"/>
                                 <StackPanel Height="350">
                                     <Grid Height="350">
                                         <Grid.RowDefinitions>
@@ -53,31 +53,46 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Section.Title}" FontSize="20" />
-                                            <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="20" />
-                                            <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="20" />
-                                            <TextBlock Text="{Binding SectionSchedule.Schedule.TimeMinutes.Min}" FontSize="20"/>
-                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.TimeHour.Hour}" FontSize="20"/>
-                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.DayOfWeeks.Title}" FontSize="20" />
-                                            <TextBlock Text="{Binding Section.isActive}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.Title}" FontSize="15" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Кабинет: " FontSize="15"/>
+                                                <TextBlock Text="{Binding Section.Cabinet.Title}" FontSize="15" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Мак Кол для Посещения: " FontSize="15"/>
+                                                <TextBlock Text="{Binding Section.MaxCountOfVisitors}" FontSize="15" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding SectionSchedule.Schedule.TimeMinutes.Min}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.SectionSchedule.Schedule.TimeHour.Hour}" FontSize="15"/>
+                                            <TextBlock Text="{Binding Section.Schedule.TimeHour.Hour}" FontSize="15" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Активная?: " FontSize="15"/>
+                                                <TextBlock Text="{Binding Section.isActive}" FontSize="15"/>
+                                            </StackPanel>
                                         </StackPanel>
                                         <Image Grid.Row="1" Source="{Binding Section.Image}" RenderOptions.BitmapScalingMode="HighQuality" Margin="10"/>
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical">
-                                <TextBlock Text="Учитель" FontSize="25" />
+                                <TextBlock Text="Учитель" FontSize="20" />
                                 <Grid Height="350">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0">
-                                        <TextBlock Text="{Binding Teacher.User.Name}" FontSize="20"/>
-                                        <TextBlock Text="{Binding Teacher.User.Surname}" FontSize="20" />
-                                        <TextBlock Text="{Binding Teacher.User.Authorization.Login}" FontSize="20" />
-                                        <TextBlock Text="{Binding Teacher.TypeTeacher.Type}" FontSize="20" />
-                                        <TextBlock Text="{Binding Teacher.isActive}" FontSize="20"/>
+                                        <TextBlock Text="{Binding Teacher.User.Name}" FontSize="15"/>
+                                        <TextBlock Text="{Binding Teacher.User.Surname}" FontSize="15" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Логин: "/>
+                                            <TextBlock Text="{Binding Teacher.User.Authorization.Login}" FontSize="15" />
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Teacher.TypeTeacher.Type}" FontSize="15" />
+                                        <TextBlock Text="{Binding Teacher.isActive}" FontSize="15"/>
                                     </StackPanel>
                                     <Image Grid.Row="1" Source="{Binding Teacher.User.Image}" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
                                 </Grid>

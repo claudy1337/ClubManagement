@@ -27,9 +27,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Секция" Binding="{Binding Section.Title}"/>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Section.Cabinet.Title}"/>
-                <DataGridTextColumn Header="День Недели" Binding="{Binding Section.Schedule.DayOfWeeks.Title}"/>
-                <DataGridTextColumn Header="Часы" Binding="{Binding Section.Schedule.TimeHour.Hour}"/>
-                <DataGridTextColumn Header="Минуты" Binding="{Binding Section.Schedule.TimeMinutes.Min}"/>
+                <DataGridTextColumn Header="День Недели" Binding="{Binding Section.SectionSchedule.Schedule.DayOfWeeks.Title}"/>
+                <DataGridTextColumn Header="Часы" Binding="{Binding Section.SectionSchedule.Schedule.TimeHour.Hour}"/>
+                <DataGridTextColumn Header="Минуты" Binding="{Binding Section.SectionSchedule.Schedule.TimeMinutes.Min}"/>
                 
             </DataGrid.Columns>
         </DataGrid>

@@ -26,13 +26,23 @@
                    Height="50"
                    Grid.Row="0"
                    material:HintAssist.Hint="Предмет"/>
-            <ComboBox Margin="20,0,0,0" Style="{StaticResource MaterialDesignFilledComboBox}"
-                   x:Name="CBTime" DisplayMemberPath="Schedule.DayOfWeeks.Title"
-                   SelectionChanged="Time_SelectionChanged"
-                   Width="180"
+            
+            <ComboBox x:Name="CBTime"  Width="180"
                    Height="50"
-                   Grid.Row="0"
-                   material:HintAssist.Hint="Время"/>
+                   material:HintAssist.Hint="Расписание"
+                   Margin="20,0,0,0"
+                   Grid.Row="0" SelectionChanged="Time_SelectionChanged" Style="{StaticResource MaterialDesignFilledComboBox}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                        <Run Text="{Binding Schedule.DayOfWeeks.Title}" />
+                        <Run Text="{Binding Schedule.TimeHour.Hour}" />
+                        <Run Text="{Binding Schedule.TimeMinutes.Min}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
         </StackPanel>
         <Button Grid.Row="2" Height="40" x:Name="btnMark" Click="btnMark_Click" Content="Отметить" Width="200"/>
 

@@ -82,6 +82,7 @@
     <Compile Include="Data\Classes\DBMethodsFromStudent.cs" />
     <Compile Include="Data\Classes\DBMethodsFromTeacher.cs" />
     <Compile Include="Data\Classes\DBMethodsFromUser.cs" />
+    <Compile Include="Data\Classes\TopsClass.cs" />
     <Compile Include="Data\Model\Authorization.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

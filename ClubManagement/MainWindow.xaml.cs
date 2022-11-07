@@ -87,7 +87,7 @@ namespace ClubManagement
 
         private void clStatistics_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            fContainer.Navigate(new StatisticsPage());
         }
 
         private void clStudent_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

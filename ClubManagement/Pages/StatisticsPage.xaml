@@ -15,6 +15,47 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="90"/>
             <RowDefinition/>
+            <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel  Orientation="Horizontal" Width="200">
+                <TextBlock x:Name="tbFirst" FontSize="15" Margin="10,0,0,0"/>
+                <TextBlock x:Name="tbSecond" FontSize="15" Margin="10,0,0,0"/>
+                <TextBlock x:Name="tbThird" FontSize="15" Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Margin="10,0,0,0"  Orientation="Horizontal">
+                <ProgressBar x:Name="pbFirst" Orientation="Vertical" Width="90"/>
+                <ProgressBar x:Name="pbSecond" Orientation="Vertical" Width="90" Margin="20,0,20,0"/>
+                <ProgressBar x:Name="pbThird" Orientation="Vertical" Width="90"/>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="DGSectionStudents" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="DGSectionStudents_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Student.Name}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.Surname}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Student.Patronymic}"/>
+                <DataGridTextColumn Header="Класс" Binding="{Binding Student.Class.Number.Numbers}"/>
+                <DataGridTextColumn Header="Буква" Binding="{Binding Student.Class.Character.Сharacters}"/>
+                <DataGridTextColumn Header="Название Секции" Binding="{Binding Section.Title}"/>
+                <DataGridTextColumn Header="Имя Препода" Binding="{Binding Teacher.User.Name}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Teacher.User.Surname}"/>
+                <DataGridTextColumn Header="Секция" Binding="{Binding Section.Title}"/>
+                <DataGridTextColumn Header="Кабинет" Binding="{Binding Section.Cabinet.Title}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Топ Кружок По Количеству" FontSize="15"/>
+                <TextBlock x:Name="txtBestSectionCount" Text="plavanie" FontSize="15"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="20,0,20,0">
+                <TextBlock Text="Топ Кружок По Расписанию" FontSize="15"/>
+                <TextBlock x:Name="txtBestSectionCountSchedule" FontSize="15"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Топ Кружок по посещению" FontSize="15"/>
+                <TextBlock Text="plavanie" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

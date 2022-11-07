@@ -44,8 +44,16 @@ namespace ClubManagement.Pages.SectionControl
 
         private void DGSectionStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var select = DGSectionStudents.SelectedItem as StudentSection;
-            lstvSectionStudent.Add(select.Student);
+            try
+            {
+                var select = DGSectionStudents.SelectedItem as StudentSection;
+                lstvSectionStudent.Add(select.Student);
+            }
+            catch(NullReferenceException)
+            {
+                return;
+            }
+            
             
         }
 
@@ -64,7 +72,7 @@ namespace ClubManagement.Pages.SectionControl
 
         private void Time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
     }
 }
